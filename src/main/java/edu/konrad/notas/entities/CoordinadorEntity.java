@@ -16,32 +16,34 @@ import javax.persistence.OneToOne;
 
 /**
  * Entidad Coordinadores
+ *
  * @author Sergio Ramirez
  */
-
 @Entity(name = "coordinadores")
-public class CoordinadorEntity implements Serializable{
-    
+public class CoordinadorEntity implements Serializable {
+
     /* ----------------------- Llave Primaria -----------------------*/
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idCoordinador;
-    
+
     /* ----------------------- Columnas de la tabla Coordinadores -----------------------*/
     @Column(name = "cod_coordinador", nullable = false)
     private Long codCoordinador;
-    
+
     @OneToOne //Relacion uno a uno con PersonaEntity
     @JoinColumn
     private Long idPersona;
-    
-    /* ----------------------- Constructor -----------------------*/
 
+    @OneToOne //Relacion uno a muchos con ProgramaEntity
+    @JoinColumn
+    private Long idPrograma;
+
+    /* ----------------------- Constructor -----------------------*/
     public CoordinadorEntity() {
     }
-    
-    /* ----------------------- Metodos Get y Set -----------------------*/
 
+    /* ----------------------- Metodos Get y Set -----------------------*/
     public Long getIdCoordinador() {
         return idCoordinador;
     }
@@ -57,7 +59,7 @@ public class CoordinadorEntity implements Serializable{
     public void setCodCoordinador(Long codCoordinador) {
         this.codCoordinador = codCoordinador;
     }
-    
+
     public Long getIdPersona() {
         return idPersona;
     }
@@ -65,6 +67,13 @@ public class CoordinadorEntity implements Serializable{
     public void setIdPersona(Long idPersona) {
         this.idPersona = idPersona;
     }
-    
-    
+
+    public Long getIdPrograma() {
+        return idPrograma;
+    }
+
+    public void setIdPrograma(Long idPrograma) {
+        this.idPrograma = idPrograma;
+    }
+
 }

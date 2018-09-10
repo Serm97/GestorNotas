@@ -18,39 +18,36 @@ import javax.persistence.OneToMany;
  *
  * @author Jorge Pulido
  */
-
 @Entity(name = "asignaturas")
-public class AsignaturaEntity implements Serializable{
-    
+public class AsignaturaEntity implements Serializable {
+
     /* ----------------------- Llave Primaria -----------------------*/
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idAsignatura;
-    
+
     /* ----------------------- Columnas de la tabla Asignaturas -----------------------*/
     @Column(name = "cod_asignatura")
     private Long codAsignatura;
-    
+
     @Column(name = "nom_asignatura")
     private String nomAsignatura;
-    
+
     @Column(name = "desc_asignatura")
     private String descAsignatura;
-    
+
     @Column(name = "num_creditos")
     private int numCreditos;
-    
-    @OneToMany //Relacion uno a muchos con NivelAcademicoEntity
-    @JoinColumn
-    private Long idNivelAcademico;
-    
-    /* ----------------------- Constructor -----------------------*/
 
+    @OneToMany //Relacion uno a muchos con ProgramaEntity
+    @JoinColumn
+    private Long idPrograma;
+
+    /* ----------------------- Constructor -----------------------*/
     public AsignaturaEntity() {
     }
-    
-    /* ----------------------- Metodos Get y Set -----------------------*/
 
+    /* ----------------------- Metodos Get y Set -----------------------*/
     public Long getIdAsignatura() {
         return idAsignatura;
     }
@@ -91,15 +88,12 @@ public class AsignaturaEntity implements Serializable{
         this.numCreditos = numCreditos;
     }
 
-    public Long getIdNivelAcademico() {
-        return idNivelAcademico;
+    public Long getIdPrograma() {
+        return idPrograma;
     }
 
-    public void setIdNivelAcademico(Long idNivelAcademico) {
-        this.idNivelAcademico = idNivelAcademico;
+    public void setIdPrograma(Long idPrograma) {
+        this.idPrograma = idPrograma;
     }
-    
-    
-    
-    
+
 }
