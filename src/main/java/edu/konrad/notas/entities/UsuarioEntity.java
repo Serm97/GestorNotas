@@ -35,7 +35,7 @@ public class UsuarioEntity implements Serializable {
     private String clave;
 
     @OneToOne //Relacion uno a uno con RolEntity
-    @JoinColumn(name = "id_rol")
+    @JoinColumn
     private Long idRol;
     
     /* ----------------------- Constructor -----------------------*/

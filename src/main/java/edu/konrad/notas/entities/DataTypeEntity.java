@@ -34,7 +34,7 @@ public class DataTypeEntity implements Serializable{
     private String nombreType;
     
     @ManyToOne //Relacion uno a muchos con DataMasterEntity
-    @JoinColumn(name = "id_datamaster")
+    @JoinColumn
     private Long idDataMaster;
     
     /* ----------------------- Constructor -----------------------*/

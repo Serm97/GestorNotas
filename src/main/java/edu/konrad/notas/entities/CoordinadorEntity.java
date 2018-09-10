@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 /**
  * Entidad Coordinadores
@@ -28,6 +30,10 @@ public class CoordinadorEntity implements Serializable{
     /* ----------------------- Columnas de la tabla Coordinadores -----------------------*/
     @Column(name = "cod_coordinador", nullable = false)
     private Long codCoordinador;
+    
+    @OneToOne //Relacion uno a uno con PersonaEntity
+    @JoinColumn
+    private Long idPersona;
     
     /* ----------------------- Constructor -----------------------*/
 
@@ -50,6 +56,14 @@ public class CoordinadorEntity implements Serializable{
 
     public void setCodCoordinador(Long codCoordinador) {
         this.codCoordinador = codCoordinador;
+    }
+    
+    public Long getIdPersona() {
+        return idPersona;
+    }
+
+    public void setIdPersona(Long idPersona) {
+        this.idPersona = idPersona;
     }
     
     

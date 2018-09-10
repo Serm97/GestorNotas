@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 /**
  * Entidad Profesores
@@ -31,6 +33,10 @@ public class ProfesorEntity implements Serializable {
 
     @Column(name = "area_profundizacion")
     private String areaProfundizacion;
+    
+    @OneToOne //Relacion uno a uno con PersonaEntity
+    @JoinColumn
+    private Long idPersona;
 
     /* ----------------------- Constructor -----------------------*/
     public ProfesorEntity() {
@@ -60,5 +66,12 @@ public class ProfesorEntity implements Serializable {
     public void setAreaProfundizacion(String areaProfundizacion) {
         this.areaProfundizacion = areaProfundizacion;
     }
+    
+    public Long getIdPersona() {
+        return idPersona;
+    }
 
+    public void setIdPersona(Long idPersona) {
+        this.idPersona = idPersona;
+    }
 }
