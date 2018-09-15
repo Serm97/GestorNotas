@@ -13,7 +13,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 /**
- * Transacciones de la entidad Asignatura
+ * Transacciones CRUD de la entidad Asignatura
  *
  * @author Sergio Ramirez
  */
@@ -26,7 +26,7 @@ public class AsignaturaPersistence {
 
     /* ----------------------- Listar Asignaturas | @return lista de asignaturas-----------------------*/
     public List<AsignaturaEntity> findAll() {
-        Query queryAsignatura = em.createQuery("select a from Asignatura a");
+        Query queryAsignatura = em.createQuery("select as from Asignatura as");
         return queryAsignatura.getResultList();
     }
 
@@ -40,16 +40,16 @@ public class AsignaturaPersistence {
     /*
     * Crear Asignatura | @param NuevaAsignatura | * @return NuevaAsignatura
      */
-    public AsignaturaEntity create(AsignaturaEntity asignatura) {
-        em.persist(asignatura);
-        return asignatura;
+    public AsignaturaEntity create(AsignaturaEntity asignaturaNueva) {
+        em.persist(asignaturaNueva);
+        return asignaturaNueva;
     }
 
     /*
     * Actualizar Asignatura | @param NuevaAsignatura | * @return NuevaAsignatura
      */
-    public AsignaturaEntity update(AsignaturaEntity asignatura) {
-        return em.merge(asignatura);
+    public AsignaturaEntity update(AsignaturaEntity asignaturaActualizada) {
+        return em.merge(asignaturaActualizada);
     }
 
     /* ----------------------- Borrar Asignatura | @param id_asignatura -----------------------*/
