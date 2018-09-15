@@ -37,15 +37,15 @@ public class CursoEntity implements Serializable{
     
     @OneToOne //Relacion uno a uno con AsignaturaEntity
     @JoinColumn
-    private Long idAsignatura;
+    private AsignaturaEntity idAsignatura;
     
     @ManyToOne //Relacion uno a muchos con ProfesorEntity
     @JoinColumn
-    private Long idProfesor;
+    private ProfesorEntity idProfesor;
     
     @ManyToOne //Relacion uno a muchos con HorarioEntity
     @JoinColumn
-    private Long idHorario;
+    private HorarioEntity idHorario;
     
     /* ----------------------- Constructor -----------------------*/
 
@@ -78,27 +78,27 @@ public class CursoEntity implements Serializable{
         this.nomCurso = nomCurso;
     }
 
-    public Long getIdAsignatura() {
+    public AsignaturaEntity getIdAsignatura() {
         return idAsignatura;
     }
 
-    public void setIdAsignatura(Long idAsignatura) {
+    public void setIdAsignatura(AsignaturaEntity idAsignatura) {
         this.idAsignatura = idAsignatura;
     }
 
-    public Long getIdProfesor() {
+    public ProfesorEntity getIdProfesor() {
         return idProfesor;
     }
 
-    public void setIdProfesor(Long idProfesor) {
+    public void setIdProfesor(ProfesorEntity idProfesor) {
         this.idProfesor = idProfesor;
     }
 
-    public Long getIdHorario() {
+    public HorarioEntity getIdHorario() {
         return idHorario;
     }
 
-    public void setIdHorario(Long idHorario) {
+    public void setIdHorario(HorarioEntity idHorario) {
         this.idHorario = idHorario;
     }
     

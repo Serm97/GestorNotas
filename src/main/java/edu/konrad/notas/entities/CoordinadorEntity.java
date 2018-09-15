@@ -37,7 +37,7 @@ public class CoordinadorEntity implements Serializable {
 
     @OneToOne //Relacion uno a muchos con ProgramaEntity
     @JoinColumn
-    private Long idPrograma;
+    private ProgramaEntity idPrograma;
 
     /* ----------------------- Constructor -----------------------*/
     public CoordinadorEntity() {
@@ -68,11 +68,11 @@ public class CoordinadorEntity implements Serializable {
         this.idPersona = idPersona;
     }
 
-    public Long getIdPrograma() {
+    public ProgramaEntity getIdPrograma() {
         return idPrograma;
     }
 
-    public void setIdPrograma(Long idPrograma) {
+    public void setIdPrograma(ProgramaEntity idPrograma) {
         this.idPrograma = idPrograma;
     }
 

@@ -35,7 +35,7 @@ public class DataTypeEntity implements Serializable{
     
     @ManyToOne //Relacion uno a muchos con DataMasterEntity
     @JoinColumn
-    private Long idDataMaster;
+    private DataMasterEntity idDataMaster;
     
     /* ----------------------- Constructor -----------------------*/
 
@@ -60,11 +60,11 @@ public class DataTypeEntity implements Serializable{
         this.nombreType = nombreType;
     }
 
-    public Long getIdDataMaster() {
+    public DataMasterEntity getIdDataMaster() {
         return idDataMaster;
     }
 
-    public void setIdDataMaster(Long idDataMaster) {
+    public void setIdDataMaster(DataMasterEntity idDataMaster) {
         this.idDataMaster = idDataMaster;
     }
     

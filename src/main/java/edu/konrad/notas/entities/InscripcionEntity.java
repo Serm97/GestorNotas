@@ -31,15 +31,15 @@ public class InscripcionEntity implements Serializable{
     
     @ManyToOne //Relacion uno a muchos con EstudianteEntity
     @JoinColumn
-    private Long idEstudiante;
+    private EstudianteEntity idEstudiante;
     
     @ManyToOne //Relacion uno a muchos con CursoEntity
     @JoinColumn
-    private Long idCurso;
+    private CursoEntity idCurso;
     
     @OneToOne
     @JoinColumn
-    private int idEstado;
+    private EstadoEntity idEstado;
     
     /* ----------------------- Constructor -----------------------*/
 
@@ -56,27 +56,27 @@ public class InscripcionEntity implements Serializable{
         this.idInscripcion = idInscripcion;
     }
 
-    public Long getIdEstudiante() {
+    public EstudianteEntity getIdEstudiante() {
         return idEstudiante;
     }
 
-    public void setIdEstudiante(Long idEstudiante) {
+    public void setIdEstudiante(EstudianteEntity idEstudiante) {
         this.idEstudiante = idEstudiante;
     }
 
-    public Long getIdCurso() {
+    public CursoEntity getIdCurso() {
         return idCurso;
     }
 
-    public void setIdCurso(Long idCurso) {
+    public void setIdCurso(CursoEntity idCurso) {
         this.idCurso = idCurso;
     }
 
-    public int getIdEstado() {
+    public EstadoEntity getIdEstado() {
         return idEstado;
     }
 
-    public void setIdEstado(int idEstado) {
+    public void setIdEstado(EstadoEntity idEstado) {
         this.idEstado = idEstado;
     }
     

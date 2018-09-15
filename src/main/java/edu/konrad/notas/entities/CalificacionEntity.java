@@ -41,7 +41,7 @@ public class CalificacionEntity {
     
     @ManyToOne //Relacion uno a muchos con InscripcionEntity
     @JoinColumn
-    private Long idInscripcion;
+    private InscripcionEntity idInscripcion;
     
     /* ----------------------- Constructor -----------------------*/
 
@@ -82,11 +82,11 @@ public class CalificacionEntity {
         this.corte = corte;
     }
 
-    public Long getIdInscripcion() {
+    public InscripcionEntity getIdInscripcion() {
         return idInscripcion;
     }
 
-    public void setIdInscripcion(Long idInscripcion) {
+    public void setIdInscripcion(InscripcionEntity idInscripcion) {
         this.idInscripcion = idInscripcion;
     }
     

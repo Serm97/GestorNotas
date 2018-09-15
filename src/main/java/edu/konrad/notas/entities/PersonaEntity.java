@@ -40,15 +40,15 @@ public class PersonaEntity implements Serializable{
     
     @ManyToOne //Relacion uno a muchos con DataTypemaster
     @JoinColumn(name = "id_datatype")
-    private Long idGenero;
+    private DataTypeEntity idGenero;
     
     @ManyToOne //Relacion uno a muchos con DataTypemaster
     @JoinColumn(name = "id_datatype")
-    private Long idTipoDocumento;
+    private DataTypeEntity idTipoDocumento;
     
     @OneToOne  //Relacion uno a uno con ProgramaEntity
     @JoinColumn(name = "id_programa")
-    private Long idPrograma;
+    private ProgramaEntity idPrograma;
     
     /* ----------------------- Constructor -----------------------*/
 
@@ -89,27 +89,27 @@ public class PersonaEntity implements Serializable{
         this.apellidoEstudiante = apellidoEstudiante;
     }
 
-    public Long getIdGenero() {
+    public DataTypeEntity getIdGenero() {
         return idGenero;
     }
 
-    public void setIdGenero(Long idGenero) {
+    public void setIdGenero(DataTypeEntity idGenero) {
         this.idGenero = idGenero;
     }
 
-    public Long getIdTipoDocumento() {
+    public DataTypeEntity getIdTipoDocumento() {
         return idTipoDocumento;
     }
 
-    public void setIdTipoDocumento(Long idTipoDocumento) {
+    public void setIdTipoDocumento(DataTypeEntity idTipoDocumento) {
         this.idTipoDocumento = idTipoDocumento;
     }
 
-    public Long getIdPrograma() {
+    public ProgramaEntity getIdPrograma() {
         return idPrograma;
     }
 
-    public void setIdPrograma(Long idPrograma) {
+    public void setIdPrograma(ProgramaEntity idPrograma) {
         this.idPrograma = idPrograma;
     }
     

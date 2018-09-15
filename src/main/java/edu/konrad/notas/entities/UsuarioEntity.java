@@ -36,7 +36,7 @@ public class UsuarioEntity implements Serializable {
 
     @OneToOne //Relacion uno a uno con RolEntity
     @JoinColumn
-    private Long idRol;
+    private RolEntity idRol;
     
     /* ----------------------- Constructor -----------------------*/
     public UsuarioEntity() {
@@ -68,11 +68,11 @@ public class UsuarioEntity implements Serializable {
         this.clave = clave;
     }
 
-    public Long getCodigoRol() {
+    public RolEntity getCodigoRol() {
         return idRol;
     }
 
-    public void setCodigoRol(Long idRol) {
+    public void setCodigoRol(RolEntity idRol) {
         this.idRol = idRol;
     }
     

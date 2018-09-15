@@ -41,7 +41,7 @@ public class AsignaturaEntity implements Serializable {
 
     @OneToMany //Relacion uno a muchos con ProgramaEntity
     @JoinColumn
-    private Long idPrograma;
+    private ProgramaEntity idPrograma;
 
     /* ----------------------- Constructor -----------------------*/
     public AsignaturaEntity() {
@@ -88,11 +88,11 @@ public class AsignaturaEntity implements Serializable {
         this.numCreditos = numCreditos;
     }
 
-    public Long getIdPrograma() {
+    public ProgramaEntity getIdPrograma() {
         return idPrograma;
     }
 
-    public void setIdPrograma(Long idPrograma) {
+    public void setIdPrograma(ProgramaEntity idPrograma) {
         this.idPrograma = idPrograma;
     }
 
