@@ -13,7 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * Entidad Niveles Academicos
+ * Entidad Programas
  * @author Jorge Pulido
  */
 
