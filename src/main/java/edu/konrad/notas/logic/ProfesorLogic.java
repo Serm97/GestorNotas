@@ -28,7 +28,7 @@ public class ProfesorLogic {
      *
      * @return listaProfesores
      */
-    public List<ProfesorEntity> obtenerProfesors() {
+    public List<ProfesorEntity> obtenerProfesores() {
         List<ProfesorEntity> listaProfesores = persistence.findAll();
         return listaProfesores;
     }

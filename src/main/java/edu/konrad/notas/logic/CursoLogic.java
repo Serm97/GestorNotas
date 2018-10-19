@@ -28,7 +28,7 @@ public class CursoLogic {
      *
      * @return listaCursos
      */
-    public List<CursoEntity> obtenerCursoes() {
+    public List<CursoEntity> obtenerCursos() {
         List<CursoEntity> listaCursos = persistence.findAll();
         return listaCursos;
     }

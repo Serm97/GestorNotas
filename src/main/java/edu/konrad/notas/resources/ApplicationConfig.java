@@ -27,5 +27,14 @@ public class ApplicationConfig extends Application{
 
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(edu.konrad.notas.resources.AsignaturaResource.class);
+        resources.add(edu.konrad.notas.resources.CalificacionResource.class);
+        resources.add(edu.konrad.notas.resources.CursoResource.class);
+        resources.add(edu.konrad.notas.resources.EstudianteResource.class);
+        resources.add(edu.konrad.notas.resources.HorarioResource.class);
+        resources.add(edu.konrad.notas.resources.InscripcionResource.class);
+        resources.add(edu.konrad.notas.resources.PersonaResource.class);
+        resources.add(edu.konrad.notas.resources.ProfesorResource.class);
+        resources.add(edu.konrad.notas.resources.ProgramaResource.class);
+        resources.add(edu.konrad.notas.resources.UsuarioResource.class);
     }
 }

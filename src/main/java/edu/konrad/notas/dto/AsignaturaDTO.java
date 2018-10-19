@@ -60,7 +60,7 @@ public class AsignaturaDTO {
     }
 
     /**
-     * Conversión masiva de Objeto a Entidad
+     * Conversión masiva de Entidad a Objeto
      *
      * @param listaAsignaturas
      * @return
