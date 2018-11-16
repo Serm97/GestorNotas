@@ -9,6 +9,7 @@ import edu.konrad.notas.entities.CalificacionEntity;
 import edu.konrad.notas.entities.InscripcionEntity;
 import edu.konrad.notas.entities.ProgramaEntity;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,10 +21,10 @@ public class CalificacionDTO {
 
     /*    Atributos de la entidad Calificacion */
     private Long idCalificacion;
-    private String fechaNota;
+    private Date fechaNota;
     private int nota;
     private int corte;
-    private InscripcionEntity idInscripcion;
+    private InscripcionDTO idInscripcion;
 
     //    Constructor
     public CalificacionDTO() {
@@ -39,7 +40,15 @@ public class CalificacionDTO {
         this.fechaNota = CalificacionEntity.getFechaNota();
         this.nota = CalificacionEntity.getNota();
         this.corte = CalificacionEntity.getCorte();
-        this.idInscripcion = CalificacionEntity.getIdInscripcion();
+        if(CalificacionEntity.getIdInscripcion()!=null){            
+            InscripcionEntity inscripcion = new InscripcionEntity();
+            inscripcion.setIdCurso(CalificacionEntity.getIdInscripcion().getIdCurso());
+            inscripcion.setIdEstado(CalificacionEntity.getIdInscripcion().getIdEstado());
+            inscripcion.setIdEstudiante(CalificacionEntity.getIdInscripcion().getIdEstudiante());
+            inscripcion.setIdInscripcion(CalificacionEntity.getIdInscripcion().getIdInscripcion());
+            this.idInscripcion = new InscripcionDTO(inscripcion);            
+        }
+        
     }
 
     /**
@@ -53,7 +62,15 @@ public class CalificacionDTO {
         calificacion.setFechaNota(this.fechaNota);
         calificacion.setNota(this.nota);
         calificacion.setCorte(this.corte);
-        calificacion.setIdInscripcion(this.idInscripcion);
+        if(this.idInscripcion!=null){
+            InscripcionEntity inscripcion = new InscripcionEntity();
+            inscripcion.setIdCurso(this.idInscripcion.getIdCurso().toEntity());
+            inscripcion.setIdEstado(this.idInscripcion.getIdEstado().toEntity());
+            inscripcion.setIdEstudiante(this.idInscripcion.getIdEstudiante().toEntity());
+            inscripcion.setIdInscripcion(this.idInscripcion.getIdInscripcion());         
+            calificacion.setIdInscripcion(inscripcion);
+        }
+        
         return calificacion;
     }
 
@@ -79,11 +96,11 @@ public class CalificacionDTO {
         this.idCalificacion = idCalificacion;
     }
 
-    public String getFechaNota() {
+    public Date getFechaNota() {
         return fechaNota;
     }
 
-    public void setFechaNota(String fechaNota) {
+    public void setFechaNota(Date fechaNota) {
         this.fechaNota = fechaNota;
     }
 
@@ -103,11 +120,11 @@ public class CalificacionDTO {
         this.corte = corte;
     }
 
-    public InscripcionEntity getIdInscripcion() {
+    public InscripcionDTO getIdInscripcion() {
         return idInscripcion;
     }
 
-    public void setIdInscripcion(InscripcionEntity idInscripcion) {
+    public void setIdInscripcion(InscripcionDTO idInscripcion) {
         this.idInscripcion = idInscripcion;
     }
 

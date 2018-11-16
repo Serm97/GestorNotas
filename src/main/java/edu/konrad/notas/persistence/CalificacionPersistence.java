@@ -26,7 +26,7 @@ public class CalificacionPersistence {
 
     /* ----------------------- Listar Calificaciones | @return lista de calificaciones-----------------------*/
     public List<CalificacionEntity> findAll() {
-        Query queryCalificacion = em.createQuery("select ca from Calificacion ca");
+        Query queryCalificacion = em.createQuery("select c from calificaciones c");
         return queryCalificacion.getResultList();
     }
 

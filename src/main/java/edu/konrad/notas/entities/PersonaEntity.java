@@ -39,11 +39,11 @@ public class PersonaEntity implements Serializable{
     private String apellidoPersona;
     
     @ManyToOne //Relacion uno a muchos con DataTypemaster
-    @JoinColumn(name = "id_datatype")
+    @JoinColumn(name = "id_genero")
     private DataTypeEntity idGenero;
     
     @ManyToOne //Relacion uno a muchos con DataTypemaster
-    @JoinColumn(name = "id_datatype")
+    @JoinColumn(name = "id_tipo_documento")
     private DataTypeEntity idTipoDocumento;
     
     @OneToOne  //Relacion uno a uno con ProgramaEntity

@@ -33,7 +33,7 @@ public class CoordinadorEntity implements Serializable {
 
     @OneToOne //Relacion uno a uno con PersonaEntity
     @JoinColumn
-    private Long idPersona;
+    private PersonaEntity idPersona;
 
     @OneToOne //Relacion uno a muchos con ProgramaEntity
     @JoinColumn
@@ -60,11 +60,11 @@ public class CoordinadorEntity implements Serializable {
         this.codCoordinador = codCoordinador;
     }
 
-    public Long getIdPersona() {
+    public PersonaEntity getIdPersona() {
         return idPersona;
     }
 
-    public void setIdPersona(Long idPersona) {
+    public void setIdPersona(PersonaEntity idPersona) {
         this.idPersona = idPersona;
     }
 

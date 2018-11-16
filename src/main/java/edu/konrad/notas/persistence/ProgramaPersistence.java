@@ -27,7 +27,7 @@ public class ProgramaPersistence {
 
     /* ----------------------- Listar Programa | @return lista de programas-----------------------*/
     public List<ProgramaEntity> findAll() {
-        Query queryPrograma = em.createQuery("select dm from Programa dm");
+        Query queryPrograma = em.createQuery("select p from programas p");
         return queryPrograma.getResultList();
     }
 

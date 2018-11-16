@@ -27,7 +27,7 @@ public class UsuarioPersistence {
 
     /* ----------------------- Listar Usuarios | @return lista de usuarios-----------------------*/
     public List<UsuarioEntity> findAll() {
-        Query queryUsuario = em.createQuery("select dm from Usuario dm");
+        Query queryUsuario = em.createQuery("select u from usuarios u");
         return queryUsuario.getResultList();
     }
 

@@ -21,7 +21,7 @@ public class EstudianteDTO {
     /*    Atributos de la entidad Estudiante */
     private Long idEstudiante;
     private Long codEstudiante;
-    private PersonaEntity idPersona;
+    private PersonaDTO idPersona;
 
     //    Constructor
     public EstudianteDTO() {
@@ -35,7 +35,18 @@ public class EstudianteDTO {
     public EstudianteDTO(EstudianteEntity estudianteEntity) {
         this.idEstudiante = estudianteEntity.getIdEstudiante();
         this.codEstudiante = estudianteEntity.getCodEstudiante();
-        this.idPersona = estudianteEntity.getIdPersona();
+        if(estudianteEntity.getIdPersona()!=null){
+            PersonaEntity persona = new PersonaEntity();
+            persona.setApellidoPersona(estudianteEntity.getIdPersona().getApellidoPersona());
+            persona.setNombrePersona(estudianteEntity.getIdPersona().getNombrePersona());
+            persona.setNumDocumento(estudianteEntity.getIdPersona().getNumDocumento());
+            persona.setIdGenero(estudianteEntity.getIdPersona().getIdGenero());
+            persona.setIdTipoDocumento(estudianteEntity.getIdPersona().getIdTipoDocumento());
+            persona.setIdPrograma(estudianteEntity.getIdPersona().getIdPrograma());
+            persona.setIdPersona(estudianteEntity.getIdPersona().getIdPersona());
+            this.idPersona = new PersonaDTO(persona);
+        }
+        
         
     }
     
@@ -47,7 +58,18 @@ public class EstudianteDTO {
         EstudianteEntity estudiante = new EstudianteEntity();
         estudiante.setIdEstudiante(this.idEstudiante);
         estudiante.setCodEstudiante(this.codEstudiante);
-        estudiante.setIdPersona(this.idPersona);
+        if(this.idPersona!= null){
+            PersonaEntity persona = new PersonaEntity();
+            persona.setApellidoPersona(this.idPersona.getApellidoPersona());
+            persona.setNombrePersona(this.idPersona.getNombrePersona());
+            persona.setNumDocumento(this.idPersona.getNumDocumento());
+            persona.setIdGenero(this.idPersona.getIdGenero().toEntity());
+            persona.setIdTipoDocumento(this.idPersona.getIdTipoDocumento().toEntity());
+            persona.setIdPrograma(this.idPersona.getIdPrograma().toEntity());
+            persona.setIdPersona(this.idPersona.getIdPersona());
+            estudiante.setIdPersona(persona);
+        }
+        
         return estudiante;
     }
     
@@ -80,11 +102,11 @@ public class EstudianteDTO {
         this.codEstudiante = codEstudiante;
     }
 
-    public PersonaEntity getIdPersona() {
+    public PersonaDTO getIdPersona() {
         return idPersona;
     }
 
-    public void setIdPersona(PersonaEntity idPersona) {
+    public void setIdPersona(PersonaDTO idPersona) {
         this.idPersona = idPersona;
     }
     

@@ -27,7 +27,7 @@ public class HorarioPersistence {
 
     /* ----------------------- Listar Horario | @return lista de horarios-----------------------*/
     public List<HorarioEntity> findAll() {
-        Query queryHorario = em.createQuery("select dm from Horario dm");
+        Query queryHorario = em.createQuery("select dm from horarios dm");
         return queryHorario.getResultList();
     }
 

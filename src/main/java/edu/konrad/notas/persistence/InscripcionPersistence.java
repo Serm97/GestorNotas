@@ -27,7 +27,7 @@ public class InscripcionPersistence {
 
     /* ----------------------- Listar Inscripcion | @return lista de inscripciones-----------------------*/
     public List<InscripcionEntity> findAll() {
-        Query queryInscripcion = em.createQuery("select dm from Inscripcion dm");
+        Query queryInscripcion = em.createQuery("select dm from inscripciones dm");
         return queryInscripcion.getResultList();
     }
 

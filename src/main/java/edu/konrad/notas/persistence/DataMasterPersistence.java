@@ -26,7 +26,7 @@ public class DataMasterPersistence {
 
     /* ----------------------- Listar DataMaster | @return lista de datamaster-----------------------*/
     public List<DataMasterEntity> findAll() {
-        Query queryDataMaster = em.createQuery("select dm from DataMaster dm");
+        Query queryDataMaster = em.createQuery("select dm from datamaster dm");
         return queryDataMaster.getResultList();
     }
 

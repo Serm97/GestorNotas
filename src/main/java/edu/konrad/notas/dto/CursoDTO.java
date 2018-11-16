@@ -14,59 +14,113 @@ import java.util.List;
 
 /**
  * Clase encargada del mapeo objeto relacional de la entidad Curso
+ *
  * @author Sergio Ramirez
  */
 public class CursoDTO {
-    
+
     // Atributos de la entidad Asignatura
     private Long idCurso;
     private Long codCurso;
     private String nomCurso;
-    private AsignaturaEntity idAsignatura;
-    private ProfesorEntity idProfesor;
-    private HorarioEntity idHorario;
-    
-    // Contructor
+    private AsignaturaDTO idAsignatura;
+    private ProfesorDTO idProfesor;
+    private HorarioDTO idHorario;
 
+    // Contructor
     public CursoDTO() {
     }
-    
+
     /**
      * Transformacion Entidad - Objeto
-     * @param cursoEntity 
+     *
+     * @param cursoEntity
      */
     public CursoDTO(CursoEntity cursoEntity) {
         this.idCurso = cursoEntity.getIdCurso();
         this.codCurso = cursoEntity.getCodCurso();
         this.nomCurso = cursoEntity.getNomCurso();
-        this.idAsignatura = cursoEntity.getIdAsignatura();
-        this.idProfesor = cursoEntity.getIdProfesor();
-        this.idHorario = cursoEntity.getIdHorario();
+        if (cursoEntity.getIdAsignatura() != null) {
+            AsignaturaEntity asignatura = new AsignaturaEntity();
+            asignatura.setCodAsignatura(cursoEntity.getIdAsignatura().getCodAsignatura());
+            asignatura.setDescAsignatura(cursoEntity.getIdAsignatura().getDescAsignatura());
+            asignatura.setNomAsignatura(cursoEntity.getIdAsignatura().getNomAsignatura());
+            asignatura.setIdPrograma(cursoEntity.getIdAsignatura().getIdPrograma());
+            asignatura.setIdAsignatura(cursoEntity.getIdAsignatura().getIdAsignatura());
+            asignatura.setNumCreditos(cursoEntity.getIdAsignatura().getNumCreditos());
+            this.idAsignatura = new AsignaturaDTO(asignatura);
+        }
+        if (cursoEntity.getIdProfesor() != null) {
+            ProfesorEntity profesor = new ProfesorEntity();
+            profesor.setAreaProfundizacion(cursoEntity.getIdProfesor().getAreaProfundizacion());
+            profesor.setIdPersona(cursoEntity.getIdProfesor().getIdPersona());
+            profesor.setCodprofesor(cursoEntity.getIdProfesor().getCodprofesor());
+            profesor.setIdProfesor(cursoEntity.getIdProfesor().getIdProfesor());
+            this.idProfesor = new ProfesorDTO(profesor);
+        }
+
+        if (cursoEntity.getIdHorario() != null) {
+            HorarioEntity horario = new HorarioEntity();
+            horario.setDia(cursoEntity.getIdHorario().getDia());
+            horario.setJornada(cursoEntity.getIdHorario().getJornada());
+            horario.setHoraFin(cursoEntity.getIdHorario().getHoraFin());
+            horario.setHoraInicio(cursoEntity.getIdHorario().getHoraInicio());
+            horario.setIdHorario(cursoEntity.getIdHorario().getIdHorario());
+            this.idHorario = new HorarioDTO(horario);
+        }
+
     }
-    
+
     /**
      * Transformacion Objeto - Entidad
+     *
      * @return CursoEntity
      */
-    public CursoEntity toEntity(){
+    public CursoEntity toEntity() {
         CursoEntity curso = new CursoEntity();
         curso.setIdCurso(this.idCurso);
         curso.setCodCurso(this.codCurso);
         curso.setNomCurso(this.nomCurso);
-        curso.setIdAsignatura(this.idAsignatura);
-        curso.setIdProfesor(this.idProfesor);
-        curso.setIdHorario(this.idHorario);
+        if (this.idAsignatura != null) {
+            AsignaturaEntity asignatura = new AsignaturaEntity();
+            asignatura.setCodAsignatura(this.idAsignatura.getCodAsignatura());
+            asignatura.setDescAsignatura(this.idAsignatura.getDescAsignatura());
+            asignatura.setNomAsignatura(this.idAsignatura.getNomAsignatura());
+            asignatura.setIdPrograma(this.idAsignatura.getIdPrograma().toEntity());
+            asignatura.setIdAsignatura(this.idAsignatura.getIdAsignatura());
+            asignatura.setNumCreditos(this.idAsignatura.getNumCreditos());
+            curso.setIdAsignatura(asignatura);
+        }
+        if (this.idProfesor != null) {
+            ProfesorEntity profesor = new ProfesorEntity();
+            profesor.setAreaProfundizacion(this.idProfesor.getAreaProfundizacion());
+            profesor.setIdPersona(this.idProfesor.getIdPersona().toEntity());
+            profesor.setCodprofesor(this.idProfesor.getCodprofesor());
+            profesor.setIdProfesor(this.idProfesor.getIdProfesor());            
+            curso.setIdProfesor(profesor);
+        }
+        if (this.idHorario != null) {
+            HorarioEntity horario = new HorarioEntity();
+            horario.setDia(this.idHorario.getDia());
+            horario.setJornada(this.idHorario.getJornada());
+            horario.setHoraFin(this.idHorario.getHoraFin());
+            horario.setHoraInicio(this.idHorario.getHoraInicio());
+            horario.setIdHorario(this.idHorario.getIdHorario());
+            curso.setIdHorario(horario);
+        }
+
         return curso;
     }
-    
+
     /**
      * Conversión masiva de Objeto a Entidad
+     *
      * @param listaCursos
-     * @return 
+     * @return
      */
-    public static List<CursoDTO> toCursoList(List<CursoEntity> listaCursos){
+    public static List<CursoDTO> toCursoList(List<CursoEntity> listaCursos) {
         List<CursoDTO> listaCursosDTO = new ArrayList<>();
-        for(CursoEntity entity : listaCursos){
+        for (CursoEntity entity : listaCursos) {
             listaCursosDTO.add(new CursoDTO(entity));
         }
         return listaCursosDTO;
@@ -96,29 +150,28 @@ public class CursoDTO {
         this.nomCurso = nomCurso;
     }
 
-    public AsignaturaEntity getIdAsignatura() {
+    public AsignaturaDTO getIdAsignatura() {
         return idAsignatura;
     }
 
-    public void setIdAsignatura(AsignaturaEntity idAsignatura) {
+    public void setIdAsignatura(AsignaturaDTO idAsignatura) {
         this.idAsignatura = idAsignatura;
     }
 
-    public ProfesorEntity getIdProfesor() {
+    public ProfesorDTO getIdProfesor() {
         return idProfesor;
     }
 
-    public void setIdProfesor(ProfesorEntity idProfesor) {
+    public void setIdProfesor(ProfesorDTO idProfesor) {
         this.idProfesor = idProfesor;
     }
 
-    public HorarioEntity getIdHorario() {
+    public HorarioDTO getIdHorario() {
         return idHorario;
     }
 
-    public void setIdHorario(HorarioEntity idHorario) {
+    public void setIdHorario(HorarioDTO idHorario) {
         this.idHorario = idHorario;
     }
-    
-    
+
 }

@@ -5,6 +5,7 @@
  */
 package edu.konrad.notas.entities;
 
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,7 +32,7 @@ public class CalificacionEntity {
     /* ----------------------- Columnas de la tabla Calificaciones -----------------------*/
     @Column(name = "fecha_nota")
     @Temporal(TemporalType.TIMESTAMP)
-    private String fechaNota;
+    private Date fechaNota;
 
     @Column
     private int nota;
@@ -58,11 +59,11 @@ public class CalificacionEntity {
         this.idCalificacion = idCalificacion;
     }
 
-    public String getFechaNota() {
+    public Date getFechaNota() {
         return fechaNota;
     }
 
-    public void setFechaNota(String fechaNota) {
+    public void setFechaNota(Date fechaNota) {
         this.fechaNota = fechaNota;
     }
 

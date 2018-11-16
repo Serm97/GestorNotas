@@ -27,7 +27,7 @@ public class EstudiantePersistence {
 
     /* ----------------------- Listar Estudiante | @return lista de estudiantes-----------------------*/
     public List<EstudianteEntity> findAll() {
-        Query queryEstudiante = em.createQuery("select dm from Estudiante dm");
+        Query queryEstudiante = em.createQuery("select dm from estudiantes dm");
         return queryEstudiante.getResultList();
     }
 

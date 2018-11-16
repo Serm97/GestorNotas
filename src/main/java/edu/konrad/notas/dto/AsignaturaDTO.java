@@ -23,7 +23,7 @@ public class AsignaturaDTO {
     private String nomAsignatura;
     private String descAsignatura;
     private int numCreditos;
-    private ProgramaEntity idPrograma;
+    private ProgramaDTO idPrograma;
 
     //    Constructor
     public AsignaturaDTO() {
@@ -40,7 +40,14 @@ public class AsignaturaDTO {
         this.nomAsignatura = asignaturaEntity.getNomAsignatura();
         this.descAsignatura = asignaturaEntity.getDescAsignatura();
         this.numCreditos = asignaturaEntity.getNumCreditos();
-        this.idPrograma = asignaturaEntity.getIdPrograma();
+        if (asignaturaEntity.getIdPrograma() != null){
+            ProgramaEntity program = new ProgramaEntity();
+            program.setCodPrograma(asignaturaEntity.getIdPrograma().getCodPrograma());
+            program.setNivelAcademico(asignaturaEntity.getIdPrograma().getNivelAcademico());
+            program.setNomPrograma(asignaturaEntity.getIdPrograma().getNomPrograma());
+            program.setIdPrograma(asignaturaEntity.getIdPrograma().getIdPrograma());
+            this.idPrograma = new ProgramaDTO(program);
+        }        
     }
 
     /**
@@ -55,7 +62,15 @@ public class AsignaturaDTO {
         asignatura.setNomAsignatura(this.nomAsignatura);
         asignatura.setDescAsignatura(this.descAsignatura);
         asignatura.setNumCreditos(this.numCreditos);
-        asignatura.setIdPrograma(this.idPrograma);
+        if (this.idPrograma != null){
+            ProgramaEntity program = new ProgramaEntity();
+            program.setCodPrograma(this.idPrograma.getCodPrograma());
+            program.setNivelAcademico(this.idPrograma.getNivelAcademico());
+            program.setNomPrograma(this.idPrograma.getNomPrograma());
+            program.setIdPrograma(this.idPrograma.getIdPrograma());
+            asignatura.setIdPrograma(program);
+        }
+        
         return asignatura;
     }
 
@@ -113,11 +128,11 @@ public class AsignaturaDTO {
         this.numCreditos = numCreditos;
     }
 
-    public ProgramaEntity getIdPrograma() {
+    public ProgramaDTO getIdPrograma() {
         return idPrograma;
     }
 
-    public void setIdPrograma(ProgramaEntity idPrograma) {
+    public void setIdPrograma(ProgramaDTO idPrograma) {
         this.idPrograma = idPrograma;
     }
 

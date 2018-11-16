@@ -5,7 +5,6 @@
  */
 package edu.konrad.notas.dto;
 
-
 import edu.konrad.notas.entities.CursoEntity;
 import edu.konrad.notas.entities.EstadoEntity;
 import edu.konrad.notas.entities.EstudianteEntity;
@@ -22,48 +21,93 @@ public class InscripcionDTO {
 
     /*    Atributos de la entidad Inscripcion */
     private Long idInscripcion;
-    private EstudianteEntity idEstudiante;
-    private CursoEntity idCurso;
-    private EstadoEntity idEstado;
+    private EstudianteDTO idEstudiante;
+    private CursoDTO idCurso;
+    private EstadoDTO idEstado;
 
     //    Constructor
     public InscripcionDTO() {
     }
-    
-    
+
     /**
      * Transformacion Entidad - Objeto
-     * @param InscripcionEntity 
+     *
+     * @param InscripcionEntity
      */
     public InscripcionDTO(InscripcionEntity inscripcionEntity) {
         this.idInscripcion = inscripcionEntity.getIdInscripcion();
-        this.idEstudiante = inscripcionEntity.getIdEstudiante();
-        this.idCurso = inscripcionEntity.getIdCurso();
-        this.idEstado = inscripcionEntity.getIdEstado();
-        
+        if (inscripcionEntity.getIdEstudiante() != null) {
+            EstudianteEntity estudiante = new EstudianteEntity();
+            estudiante.setCodEstudiante(inscripcionEntity.getIdEstudiante().getCodEstudiante());
+            estudiante.setIdPersona(inscripcionEntity.getIdEstudiante().getIdPersona());
+            estudiante.setIdEstudiante(inscripcionEntity.getIdEstudiante().getIdEstudiante());
+            this.idEstudiante = new EstudianteDTO(estudiante);
+        }
+        if (inscripcionEntity.getIdCurso() != null) {
+            CursoEntity curso = new CursoEntity();
+            curso.setCodCurso(inscripcionEntity.getIdCurso().getCodCurso());
+            curso.setIdAsignatura(inscripcionEntity.getIdCurso().getIdAsignatura());
+            curso.setIdHorario(inscripcionEntity.getIdCurso().getIdHorario());
+            curso.setIdProfesor(inscripcionEntity.getIdCurso().getIdProfesor());
+            curso.setNomCurso(inscripcionEntity.getIdCurso().getNomCurso());
+            curso.setIdCurso(inscripcionEntity.getIdCurso().getIdCurso());
+            this.idCurso = new CursoDTO(curso);
+        }
+        if (inscripcionEntity.getIdEstado() != null) {
+            EstadoEntity estado = new EstadoEntity();
+            estado.setDescEstado(inscripcionEntity.getIdEstado().getDescEstado());
+            estado.setNomEstado(inscripcionEntity.getIdEstado().getNomEstado());
+            estado.setIdEstado(inscripcionEntity.getIdEstado().getIdEstado());
+            this.idEstado = new EstadoDTO(estado);
+        }
+
     }
-    
+
     /**
      * Transformacion Objeto - Entidad
+     *
      * @return ProductoEntity
      */
-    public InscripcionEntity toEntity(){
+    public InscripcionEntity toEntity() {
         InscripcionEntity inscripcion = new InscripcionEntity();
         inscripcion.setIdInscripcion(this.idInscripcion);
-        inscripcion.setIdEstudiante(this.idEstudiante);
-        inscripcion.setIdCurso(this.idCurso);
-        inscripcion.setIdEstado(this.idEstado);
+        if (this.idEstudiante != null) {
+            EstudianteEntity estudiante = new EstudianteEntity();
+            estudiante.setCodEstudiante(this.idEstudiante.getCodEstudiante());
+            estudiante.setIdPersona(this.idEstudiante.getIdPersona().toEntity());
+            estudiante.setIdEstudiante(this.idEstudiante.getIdEstudiante());
+            inscripcion.setIdEstudiante(estudiante);
+        }
+        if (this.idCurso != null) {
+            CursoEntity curso = new CursoEntity();
+            curso.setCodCurso(this.idCurso.getCodCurso());
+            curso.setNomCurso(this.idCurso.getNomCurso());
+            curso.setIdHorario(this.idCurso.getIdHorario().toEntity());
+            curso.setIdProfesor(this.idCurso.getIdProfesor().toEntity());
+            curso.setIdAsignatura(this.idCurso.getIdAsignatura().toEntity());
+            curso.setIdCurso(this.idCurso.getIdCurso());
+            inscripcion.setIdCurso(curso);
+        }
+        if (this.idEstado != null){
+            EstadoEntity estado = new EstadoEntity();
+            estado.setDescEstado(estado.getDescEstado());
+            estado.setNomEstado(estado.getNomEstado());
+            estado.setIdEstado(estado.getIdEstado());
+            inscripcion.setIdEstado(estado);
+        }
+        
         return inscripcion;
     }
-    
+
     /**
      * Conversión masiva de Objeto a Entidad
+     *
      * @param listaInscripcions
-     * @return 
+     * @return
      */
-    public static List<InscripcionDTO> toInscripcionList(List<InscripcionEntity> listaInscripciones){
+    public static List<InscripcionDTO> toInscripcionList(List<InscripcionEntity> listaInscripciones) {
         List<InscripcionDTO> listaInscripcionesDTO = new ArrayList<>();
-        for(InscripcionEntity entity : listaInscripciones){
+        for (InscripcionEntity entity : listaInscripciones) {
             listaInscripcionesDTO.add(new InscripcionDTO(entity));
         }
         return listaInscripcionesDTO;
@@ -77,31 +121,28 @@ public class InscripcionDTO {
         this.idInscripcion = idInscripcion;
     }
 
-    public EstudianteEntity getIdEstudiante() {
+    public EstudianteDTO getIdEstudiante() {
         return idEstudiante;
     }
 
-    public void setIdEstudiante(EstudianteEntity idEstudiante) {
+    public void setIdEstudiante(EstudianteDTO idEstudiante) {
         this.idEstudiante = idEstudiante;
     }
 
-    public CursoEntity getIdCurso() {
+    public CursoDTO getIdCurso() {
         return idCurso;
     }
 
-    public void setIdCurso(CursoEntity idCurso) {
+    public void setIdCurso(CursoDTO idCurso) {
         this.idCurso = idCurso;
     }
 
-    public EstadoEntity getIdEstado() {
+    public EstadoDTO getIdEstado() {
         return idEstado;
     }
 
-    public void setIdEstado(EstadoEntity idEstado) {
+    public void setIdEstado(EstadoDTO idEstado) {
         this.idEstado = idEstado;
     }
-    
-    
-    
 
 }

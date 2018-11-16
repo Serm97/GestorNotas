@@ -26,7 +26,7 @@ public class EstadoPersistence {
 
     /* ----------------------- Listar Estado | @return lista de estados-----------------------*/
     public List<EstadoEntity> findAll() {
-        Query queryEstado = em.createQuery("select dm from Estado dm");
+        Query queryEstado = em.createQuery("select dm from estados dm");
         return queryEstado.getResultList();
     }
 

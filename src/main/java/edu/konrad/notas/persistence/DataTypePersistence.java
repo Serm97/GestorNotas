@@ -26,7 +26,7 @@ public class DataTypePersistence {
 
     /* ----------------------- Listar DataType | @return lista de datatype-----------------------*/
     public List<DataTypeEntity> findAll() {
-        Query queryDataType = em.createQuery("select dm from DataType dm");
+        Query queryDataType = em.createQuery("select dm from dataType dm");
         return queryDataType.getResultList();
     }
 

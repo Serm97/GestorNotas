@@ -26,7 +26,7 @@ public class AsignaturaPersistence {
 
     /* ----------------------- Listar Asignaturas | @return lista de asignaturas-----------------------*/
     public List<AsignaturaEntity> findAll() {
-        Query queryAsignatura = em.createQuery("select as from Asignatura as");
+        Query queryAsignatura = em.createQuery("select a from asignaturas a");
         return queryAsignatura.getResultList();
     }
 

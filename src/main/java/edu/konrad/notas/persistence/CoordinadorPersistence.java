@@ -26,7 +26,7 @@ public class CoordinadorPersistence {
 
     /* ----------------------- Listar Coordinadores | @return lista de coordinadores-----------------------*/
     public List<CoordinadorEntity> findAll() {
-        Query queryCoordinador = em.createQuery("select co from Coordinador co");
+        Query queryCoordinador = em.createQuery("select co from coordinadores co");
         return queryCoordinador.getResultList();
     }
 

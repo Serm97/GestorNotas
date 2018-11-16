@@ -21,7 +21,7 @@ public class DataTypeDTO {
     /*    Atributos de la entidad DataType */
     private Long idDataType;
     private String nombreType;
-    private DataMasterEntity idDataMaster;
+    private DataMasterDTO idDataMaster;
 
     //    Constructor
 
@@ -36,7 +36,14 @@ public class DataTypeDTO {
     public DataTypeDTO(DataTypeEntity dataTypeEntity) {
        this.idDataType = dataTypeEntity.getIdDataType();
        this.nombreType = dataTypeEntity.getNombreType();
-       this.idDataMaster = dataTypeEntity.getIdDataMaster();
+       if(dataTypeEntity.getIdDataMaster()!=null){
+           DataMasterEntity dataMaster = new DataMasterEntity();
+           dataMaster.setIdDataMaster(dataTypeEntity.getIdDataMaster().getIdDataMaster());
+           dataMaster.setDescripcion(dataTypeEntity.getIdDataMaster().getDescripcion());
+           dataMaster.setNombreData(dataTypeEntity.getIdDataMaster().getNombreData());           
+           this.idDataMaster = new DataMasterDTO(dataMaster);
+       }
+       
     }
     
     /**
@@ -47,7 +54,14 @@ public class DataTypeDTO {
         DataTypeEntity datatype = new DataTypeEntity();
         datatype.setIdDataType(this.idDataType);
         datatype.setNombreType(this.nombreType);
-        datatype.setIdDataMaster(this.idDataMaster);
+        if(this.idDataMaster!= null){
+            DataMasterEntity dataMaster = new DataMasterEntity();
+           dataMaster.setIdDataMaster(this.idDataMaster.getIdDataMaster());
+           dataMaster.setDescripcion(this.idDataMaster.getDescripcion());
+           dataMaster.setNombreData(this.idDataMaster.getNombreData());           
+           datatype.setIdDataMaster(dataMaster);
+        }
+        
         return datatype;
     }
     
@@ -80,11 +94,11 @@ public class DataTypeDTO {
         this.nombreType = nombreType;
     }
 
-    public DataMasterEntity getIdDataMaster() {
+    public DataMasterDTO getIdDataMaster() {
         return idDataMaster;
     }
 
-    public void setIdDataMaster(DataMasterEntity idDataMaster) {
+    public void setIdDataMaster(DataMasterDTO idDataMaster) {
         this.idDataMaster = idDataMaster;
     }
     

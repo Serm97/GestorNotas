@@ -27,7 +27,7 @@ public class ProfesorPersistence {
 
     /* ----------------------- Listar Profesor | @return lista de profesores-----------------------*/
     public List<ProfesorEntity> findAll() {
-        Query queryProfesor = em.createQuery("select dm from Profesor dm");
+        Query queryProfesor = em.createQuery("select p from profesores p");
         return queryProfesor.getResultList();
     }
 

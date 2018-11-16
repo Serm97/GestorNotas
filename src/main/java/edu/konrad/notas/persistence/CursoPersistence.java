@@ -26,7 +26,7 @@ public class CursoPersistence {
 
     /* ----------------------- Listar Cursos | @return lista de cursos-----------------------*/
     public List<CursoEntity> findAll() {
-        Query queryCurso = em.createQuery("select c from Curso c");
+        Query queryCurso = em.createQuery("select cu from cursos cu");
         return queryCurso.getResultList();
     }
 

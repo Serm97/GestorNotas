@@ -27,7 +27,7 @@ public class RolPersistence {
 
     /* ----------------------- Listar Rol | @return lista de roles-----------------------*/
     public List<RolEntity> findAll() {
-        Query queryRol = em.createQuery("select dm from Rol dm");
+        Query queryRol = em.createQuery("select r from roles r");
         return queryRol.getResultList();
     }
 

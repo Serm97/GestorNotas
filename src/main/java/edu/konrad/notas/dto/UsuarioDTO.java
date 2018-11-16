@@ -22,7 +22,7 @@ public class UsuarioDTO {
     private Long idUsuario;
     private String emailUsuario;
     private String clave;
-    private RolEntity idRol;
+    private RolDTO idRol;
 
     //    Constructor
     public UsuarioDTO() {
@@ -37,7 +37,14 @@ public class UsuarioDTO {
         this.idUsuario = usuarioEntity.getIdUsuario();
         this.emailUsuario = usuarioEntity.getEmailUsuario();
         this.clave = usuarioEntity.getClave();
-        this.idRol = usuarioEntity.getCodigoRol();
+        if(usuarioEntity.getCodigoRol()!=null){
+            RolEntity rol = new RolEntity();
+            rol.setNombreRol(usuarioEntity.getCodigoRol().getNombreRol());
+            rol.setPermisos(usuarioEntity.getCodigoRol().getPermisos());
+            rol.setIdRol(usuarioEntity.getCodigoRol().getIdRol());
+            this.idRol = new RolDTO(rol);
+        }
+        
     }
     
     /**
@@ -49,7 +56,13 @@ public class UsuarioDTO {
         usuario.setIdUsuario(this.idUsuario);
         usuario.setEmailUsuario(this.emailUsuario);
         usuario.setClave(this.clave);
-        usuario.setCodigoRol(this.idRol);
+        if(this.idRol!=null){
+        RolEntity rol = new RolEntity();
+            rol.setNombreRol(this.idRol.getNombreRol());
+            rol.setPermisos(this.idRol.getPermisos());
+            rol.setIdRol(this.idRol.getIdRol());
+            usuario.setCodigoRol(rol);
+        }       
         return usuario;        
     }
     
@@ -90,11 +103,11 @@ public class UsuarioDTO {
         this.clave = clave;
     }
 
-    public RolEntity getIdRol() {
+    public RolDTO getIdRol() {
         return idRol;
     }
 
-    public void setIdRol(RolEntity idRol) {
+    public void setIdRol(RolDTO idRol) {
         this.idRol = idRol;
     }
     

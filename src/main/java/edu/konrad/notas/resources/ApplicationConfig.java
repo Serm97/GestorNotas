@@ -15,7 +15,7 @@ import javax.ws.rs.core.Application;
  * @author Sergio Ramirez
  */
 
-@ApplicationPath("/api")
+@ApplicationPath("api")
 public class ApplicationConfig extends Application{
     
     @Override
