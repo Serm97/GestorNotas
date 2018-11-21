@@ -1,0 +1,1 @@
+var personasModule = angular.module("personasModule", []);

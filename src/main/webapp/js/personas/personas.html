@@ -1,0 +1,81 @@
+<div ng-include="'views/header.html'"></div>
+
+<div class="container mb-4">
+        <h3 class="text-center mt-4">Modúlo Personas</h3>
+        <br><br>
+        <div class="row">
+                <div class="col-md-7">
+                    
+                    <table class="table table-bordered table-hover table-condensed">
+                            <thead class="text-center">
+                                <th colspan="2">Nombre Completo</th>
+                                <th>Programa</th>   
+                                <th>Documento</th>
+                                <th colspan="2">Acciones</th>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="persona in personas">
+                                    <td colspan="2">{{persona.nombrePersona}} {{persona.apellidoPersona}}</td>
+                                    <td>{{persona.idPrograma.nomPrograma}}</td>
+                                    <td>N° {{persona.numDocumento}}</td>
+                                    <td colspan="2">
+                                        <button class="btn btn-success"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-danger" ng-click="eliminar(persona.idPersona)"><i class="fas fa-trash-alt"></i></button>
+                                        
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </div>
+            
+                <div class="col-md-5">
+                    <form class="mt-1 form" ng-submit="create           ()">
+                        <p class="lead text-center"><i class="fas fa-male"></i><i class="fas fa-female"></i> Crear Personas</p>
+                        <hr>
+                        <div class="form-row mb-3">
+                            <div class="col">
+                                <select class="form-control" name="idTipoDocumento" ng-model="person.idTipoDocumento" required>
+                                    <option value="">Seleccione Tipo...</option>
+                                    <option value="21">Tarjeta de Identidad</option>
+                                    <option value="22">Cedula de Ciudadania</option>
+                                    <option value="23">Cedula de Extranjeria</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" name="numDocumento" ng-model="person.numDocumento" placeholder="N° de Documento" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" name="nombrePersona" ng-model="person.nombrePersona" placeholder="Nombre de la Persona" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" name="apellidoPersona" ng-model="person.apellidoPersona" placeholder="Apellidos de la Persona" required>
+                        </div>
+                        <div class="input-group mb-4">
+                                <div class="input-group-prepend">
+                                  <label class="input-group-text">Genéro</label>
+                                </div>
+                            <select class="form-control" name="idGenero" ng-model="person.idGenero" required>
+                                  <option value="11">Femenino</option>
+                                  <option value="12">Masculino</option>
+                                  <option value="13">Indefinido</option>
+                                </select>
+                        </div>
+
+                        <div class="input-group mb-4">
+                                <div class="input-group-prepend">
+                                  <label class="input-group-text">Programa</label>
+                                </div>
+                                <select class="form-control" ng-model="person.idPrograma" ng-options="programa as programa.nomPrograma for programa in listaProgramas track by programa.idPrograma" >
+                                      <option value="">--Elige programa--</option>
+                                </select>
+                        </div>
+
+                        <button class="btn btn-block btn-success">Crear</button>
+                    </form>
+                </div>
+            </div>
+    <br><br><br>
+</div>
+
+<div ng-include="'views/footer.html'"></div>

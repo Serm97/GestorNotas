@@ -21,7 +21,7 @@ public class ProgramaDTO {
     private Long idPrograma;
     private Long codPrograma;
     private String nomPrograma;
-    private int nivelAcademico;
+    private String nivelAcademico;
 
     //    Constructor
     public ProgramaDTO() {
@@ -89,11 +89,11 @@ public class ProgramaDTO {
         this.nomPrograma = nomPrograma;
     }
 
-    public int getNivelAcademico() {
+    public String getNivelAcademico() {
         return nivelAcademico;
     }
 
-    public void setNivelAcademico(int nivelAcademico) {
+    public void setNivelAcademico(String nivelAcademico) {
         this.nivelAcademico = nivelAcademico;
     }
     

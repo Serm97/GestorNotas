@@ -1,0 +1,63 @@
+<div ng-include="'views/header.html'"></div>
+
+<div class="container">
+        <h3 class="text-center mt-4">Modúlo Programas</h3>
+        <br><br>
+        <div class="row">
+                <div class="col-md-7">
+                    
+                    <table class="table table-hover">
+                            <thead class="text-center">
+                                <th colspan="2">Codigo</th>
+                                <th>Programa</th>   
+                                <th>Nivel Academico</th>
+                                <th colspan="2">Acciones</th>   
+                            </thead>
+                            <tbody class="text-center">
+                                <tr ng-repeat="programa in programas">
+                                    <td colspan="2">{{programa.codPrograma}}</td>
+                                    <td>{{programa.nomPrograma}}</td>
+                                    <td>{{programa.nivelAcademico}}</td>
+                                    <td colspan="2">
+                                        <button class="btn btn-success"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-danger" ng-click="eliminar(programa.idPrograma)"><i class="fas fa-trash-alt"></i></button>
+                                        
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </div>
+            
+                <div class="col-md-5">
+                    <form class="mt-1 form" ng-submit="crearPrograma()">
+                        <p class="lead text-center"><i class="fas fa-graduation-cap"></i> Crear Programas</p>
+                        <hr>
+                        <div class="form-row mb-3">
+                            <div class="col">
+                                <input type="number" class="form-control" name="codPrograma" ng-model="programa.codPrograma" placeholder="Codigo del Programa" required>
+                            </div>
+                        </div>
+                        <div class="form-row mb-3">
+                            <div class="col">
+                                <input type="text" class="form-control" name="nomPrograma" ng-model="programa.nomPrograma" placeholder="Nombre del Programa" required>
+                            </div>
+                        </div>
+                        <div class="form-row mb-3">
+                            <div class="col">
+                                    <select class="form-control" name="nivelAcademico" ng-model="programa.nivelAcademico" required>
+                                            <option value="">Seleccione Nivel...</option>
+                                            <option value="Pregrado">Pregrado</option>
+                                            <option value="Postgrado">Postgrado</option>
+                                            <option value="Maestria">Maestria</option>
+                                            <option value="Doctorado">Doctorado</option>
+                                        </select>
+                            </div>
+                        </div> 
+
+                        <button class="btn btn-block btn-success">Crear</button>
+                    </form>
+                </div>
+            </div>
+</div>
+
+<div ng-include="'views/footer.html'"></div>

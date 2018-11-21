@@ -54,7 +54,7 @@ public class PersonaLogic {
      * @return
      */
     public PersonaEntity crearPersona(PersonaEntity personaCrear) {
-        persistence.create(personaCrear);
+        persistence.create(personaCrear);   
         return personaCrear;
     }
 

@@ -61,6 +61,7 @@ public class PersonaResource {
     */
     @POST
     public PersonaDTO createPersona(PersonaDTO persona){
+        System.out.println(persona);
         return new PersonaDTO(personaLogic.crearPersona(persona.toEntity()));
     }
     

@@ -33,7 +33,7 @@ public class ProgramaEntity implements Serializable{
     private String nomPrograma;
     
     @Column(name = "nivel_academico")
-    private int nivelAcademico;
+    private String nivelAcademico;
     
     /* ----------------------- Constructor -----------------------*/
 
@@ -66,14 +66,14 @@ public class ProgramaEntity implements Serializable{
         this.nomPrograma = nomPrograma;
     }
 
-    public int getNivelAcademico() {
+    public String getNivelAcademico() {
         return nivelAcademico;
     }
 
-    public void setNivelAcademico(int nivelAcademico) {
+    public void setNivelAcademico(String nivelAcademico) {
         this.nivelAcademico = nivelAcademico;
     }
 
-    
+      
     
 }
