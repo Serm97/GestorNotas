@@ -1,0 +1,51 @@
+<div ng-include="'views/header.html'"></div>
+
+<div class="container">
+
+    <br><br><br>
+    <h3 class="m-4 text-center"> <i class="fas fa-graduation-cap"></i>Inscripciones 2018-II</h3>
+
+    <div class="row">
+
+        <div class="col-md-2">         
+        </div>
+
+        <div class="col-md-8">
+            <form class="mt-1 form" ng-submit="Inscribirse()">
+                <p class="lead text-center"> Formulario de Inscripcion</p>
+                <hr>
+                <div class="form-row mb-3">
+                    <div class="col">
+                        <input type="number" class="form-control" name="codPrograma" ng-model="programa.codPrograma"
+                            placeholder="Codigo del Curso" required>
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col">
+                        <input type="text" class="form-control" name="nomPrograma" ng-model="programa.nomPrograma"
+                            placeholder="Nombre del Programa" required>
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col">
+                        <select class="form-control" name="nivelAcademico" ng-model="programa.nivelAcademico" required>
+                            <option value="">Seleccione Nivel...</option>
+                            <option value="Pregrado">Pregrado</option>
+                            <option value="Postgrado">Postgrado</option>
+                            <option value="Maestria">Maestria</option>
+                            <option value="Doctorado">Doctorado</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="btn btn-block btn-primary">Crear</button>
+            </form>
+        </div>
+
+        <div class="col-md-2">         
+        </div>
+
+    </div>
+</div>
+
+<div ng-include="'views/footer.html'"></div>

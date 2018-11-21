@@ -1,0 +1,1 @@
+var inscripcionesModule = angular.module("inscripcionesModule", []);

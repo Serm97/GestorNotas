@@ -3,6 +3,8 @@ var app = angular.module("GestorNotasKL", [
    'ui.router',
    'loginModule',
    'personasModule',
-   'programasModule'
+   'programasModule',
+   'inscripcionesModule',
+   'cursosModule'
    
 ]);
