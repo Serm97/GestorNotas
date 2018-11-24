@@ -5,7 +5,6 @@
  */
 package edu.konrad.notas.dto;
 
-
 import edu.konrad.notas.entities.EstudianteEntity;
 import edu.konrad.notas.entities.PersonaEntity;
 import java.util.ArrayList;
@@ -26,16 +25,16 @@ public class EstudianteDTO {
     //    Constructor
     public EstudianteDTO() {
     }
-    
-    
+
     /**
      * Transformacion Entidad - Objeto
-     * @param EstudianteEntity 
+     *
+     * @param EstudianteEntity
      */
     public EstudianteDTO(EstudianteEntity estudianteEntity) {
         this.idEstudiante = estudianteEntity.getIdEstudiante();
         this.codEstudiante = estudianteEntity.getCodEstudiante();
-        if(estudianteEntity.getIdPersona()!=null){
+        if (estudianteEntity.getIdPersona() != null) {
             PersonaEntity persona = new PersonaEntity();
             persona.setApellidoPersona(estudianteEntity.getIdPersona().getApellidoPersona());
             persona.setNombrePersona(estudianteEntity.getIdPersona().getNombrePersona());
@@ -46,41 +45,42 @@ public class EstudianteDTO {
             persona.setIdPersona(estudianteEntity.getIdPersona().getIdPersona());
             this.idPersona = new PersonaDTO(persona);
         }
-        
-        
+
     }
-    
+
     /**
      * Transformacion Objeto - Entidad
+     *
      * @return ProductoEntity
      */
-    public EstudianteEntity toEntity(){
+    public EstudianteEntity toEntity() {
         EstudianteEntity estudiante = new EstudianteEntity();
         estudiante.setIdEstudiante(this.idEstudiante);
         estudiante.setCodEstudiante(this.codEstudiante);
-        if(this.idPersona!= null){
+        if (this.idPersona != null) {
             PersonaEntity persona = new PersonaEntity();
             persona.setApellidoPersona(this.idPersona.getApellidoPersona());
             persona.setNombrePersona(this.idPersona.getNombrePersona());
             persona.setNumDocumento(this.idPersona.getNumDocumento());
-            persona.setIdGenero(this.idPersona.getIdGenero());
-            persona.setIdTipoDocumento(this.idPersona.getIdTipoDocumento());
+            persona.setIdGenero(this.idPersona.getIdGenero().toEntity());
+            persona.setIdTipoDocumento(this.idPersona.getIdTipoDocumento().toEntity());
             persona.setIdPrograma(this.idPersona.getIdPrograma().toEntity());
             persona.setIdPersona(this.idPersona.getIdPersona());
             estudiante.setIdPersona(persona);
         }
-        
+
         return estudiante;
     }
-    
+
     /**
      * Conversión masiva de Objeto a Entidad
+     *
      * @param listaEstudiantes
-     * @return 
+     * @return
      */
-    public static List<EstudianteDTO> toEstudianteList(List<EstudianteEntity> listaEstudiantes){
+    public static List<EstudianteDTO> toEstudianteList(List<EstudianteEntity> listaEstudiantes) {
         List<EstudianteDTO> listaEstudiantesDTO = new ArrayList<>();
-        for(EstudianteEntity entity : listaEstudiantes){
+        for (EstudianteEntity entity : listaEstudiantes) {
             listaEstudiantesDTO.add(new EstudianteDTO(entity));
         }
         return listaEstudiantesDTO;
@@ -109,8 +109,5 @@ public class EstudianteDTO {
     public void setIdPersona(PersonaDTO idPersona) {
         this.idPersona = idPersona;
     }
-    
-    
-    
 
 }

@@ -13,18 +13,19 @@
                         <form role="form">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Ingresa tu usuario" name="usuario" type="text" autofocus>
+                                    <input class="form-control" placeholder="Ingresa tu usuario" ng-model="usuario.emailUsuario" name="usuario" type="text" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Digita tu contraseña" name="clave" type="password" value="">
+                                    <input class="form-control" placeholder="Digita tu contraseña" ng-model="usuario.clave" name="clave" type="password" value="">
                                 </div>
                                 <div class="checkbox">
                                         <a href="#"><small><i class="fa fa-unlock-alt"></i> Olvide mi contraseña.</small></a>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <a ui-sref="inicio" class="btn btn-success btn-block">
+                                <!--<a ui-sref="inicio" class="btn btn-success btn-block">
                                    Ingresar <i class="fa fa-arrow-circle-right"></i>
-                                </a>
+                                </a>-->
+                                <button class="btn btn-success btn-block"  ng-click="login()" id="login">Ingresar</button>
                             </fieldset>
                         </form>
                     </div>

@@ -22,34 +22,36 @@ import javax.persistence.OneToOne;
 
 @Entity(name = "cursos")
 public class CursoEntity implements Serializable{
-    
+
    /* ----------------------- Llave Primaria -----------------------*/
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idCurso;
-    
+
     /* ----------------------- Columnas de la tabla Cursos -----------------------*/
     @Column(name = "cod_curso", nullable = false)
         private Long codCurso;
-    
+
     @Column(name = "nom_curso")
     private String nomCurso;
-    
+
     @OneToOne //Relacion uno a uno con AsignaturaEntity
     @JoinColumn
     private AsignaturaEntity idAsignatura;
-    
+
     @ManyToOne //Relacion uno a muchos con ProfesorEntity
     @JoinColumn
     private ProfesorEntity idProfesor;
-    
-    private String idHorario;
-    
+
+    @ManyToOne //Relacion uno a muchos con HorarioEntity
+    @JoinColumn
+    private HorarioEntity idHorario;
+
     /* ----------------------- Constructor -----------------------*/
 
     public CursoEntity() {
     }
-    
+
     /* ----------------------- Metodos Get y Set -----------------------*/
 
     public Long getIdCurso() {
@@ -92,17 +94,17 @@ public class CursoEntity implements Serializable{
         this.idProfesor = idProfesor;
     }
 
-    public String getIdHorario() {
+    public HorarioEntity getIdHorario() {
         return idHorario;
     }
 
-    public void setIdHorario(String idHorario) {
+    public void setIdHorario(HorarioEntity idHorario) {
         this.idHorario = idHorario;
     }
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
 }
