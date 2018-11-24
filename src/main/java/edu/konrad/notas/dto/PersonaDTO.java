@@ -51,9 +51,9 @@ public class PersonaDTO {
         }
         if (personaEntity.getIdTipoDocumento() != null) {
             DataTypeEntity idTipoDocumento = new DataTypeEntity();
-            idTipoDocumento.setIdDataMaster(personaEntity.getIdGenero().getIdDataMaster());
-            idTipoDocumento.setNombreType(personaEntity.getIdGenero().getNombreType());
-            idTipoDocumento.setIdDataType(personaEntity.getIdGenero().getIdDataType());
+            idTipoDocumento.setIdDataMaster(personaEntity.getIdTipoDocumento().getIdDataMaster());
+            idTipoDocumento.setNombreType(personaEntity.getIdTipoDocumento().getNombreType());
+            idTipoDocumento.setIdDataType(personaEntity.getIdTipoDocumento().getIdDataType());
             this.idTipoDocumento = new DataTypeDTO(idTipoDocumento);
         }
         if (personaEntity.getIdPrograma() != null) {

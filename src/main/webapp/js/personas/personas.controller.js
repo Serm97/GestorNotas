@@ -9,9 +9,14 @@ personasModule.controller('personasController', ['$scope', '$http', '$state', fu
         $scope.tipoDocumento = {};
 
         $scope.create = function () {
-            
-            $scope.person.idTipoDocumento = $scope.tipoDocumento.idTipoDocumento;
-            $scope.person.genero = $scope.genero.idGenero;
+
+            $scope.person.idTipoDocumento = {
+                "idDataType": $scope.tipoDocumento.idDataType
+            };
+            $scope.person.idGenero = {
+                "idDataType": $scope.genero.idDataType
+            };
+            console.log(JSON.stringify($scope.person));
             $http.post('api/personas', JSON.stringify($scope.person)).then(function (response) {
                 alert("Persona " + $scope.person.nombrePersona + " ha sido creada.")
                 persona = response.data;

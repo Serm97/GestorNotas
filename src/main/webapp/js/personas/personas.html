@@ -12,10 +12,10 @@
                             <hr>
                             <div class="form-row mb-3">
                                 <div class="col">
-                                    <select class="form-control" name="idTipoDocumento" ng-model="tipoDocumento.idTipoDocumento" required>
+                                    <select class="form-control" name="idTipoDocumento" ng-model="tipoDocumento.idDataType" required>
                                         <option value="">Seleccione Tipo...</option>
                                         <option value="TI">Tarjeta de Identidad</option>
-                                        <option value="CC">Cedula de Ciudadania</option>
+                                        <option value="2">Cedula de Ciudadania</option>
                                         <option value="CE">Cedula de Extranjeria</option>
                                     </select>
                                 </div>
@@ -33,10 +33,10 @@
                                     <div class="input-group-prepend">
                                       <label class="input-group-text">Genéro</label>
                                     </div>
-                                <select class="form-control" name="idGenero" ng-model="genero.idGenero" required>
+                                <select class="form-control" name="idGenero" ng-model="genero.idDataType" required>
                                      <option value="" selected>--Elige Genero--</option>
                                       <option value="Femenino">Femenino</option>
-                                      <option value="Masculino">Masculino</option>
+                                      <option value="1">Masculino</option>
                                       <option value="Indefinido">Indefinido</option>
                                     </select>
                             </div>
@@ -56,7 +56,7 @@
                                     </div>
                                 <select class="form-control" name="rol" ng-model="person.rol" required>
                                      <option value="" selected>--Elige Rol--</option>
-                                      <option value="Estudiante">Estudiante</option>
+                                      <option value="251">Estudiante</option>
                                       <option value="Profesor">Profesor</option>
                                       <option value="Coordinador">Coordinador</option>
                                     </select>
@@ -80,9 +80,9 @@
                                 <tr ng-repeat="persona in personas">
                                     <td>{{persona.nombrePersona}}</td>
                                     <td>{{persona.apellidoPersona}}</td>
-                                    <td>{{persona.idTipoDocumento}}</td>
+                                    <td>{{persona.idTipoDocumento.nombreType}}</td>
                                     <td>N° {{persona.numDocumento}}</td>
-                                    <td>{{persona.idGenero}}</td>
+                                    <td>{{persona.idGenero.nombreType}}</td>
                                     <td>
                                         <button class="btn btn-primary btn-block"><i class="fas fa-edit"></i></button>
                                         <!-- <button class="btn btn-danger" ng-click="eliminar(persona.idPersona)"><i class="fas fa-trash-alt"></i></button> -->
