@@ -5,6 +5,9 @@ var app = angular.module("GestorNotasKL", [
    'personasModule',
    'programasModule',
    'inscripcionesModule',
-   'cursosModule'
+   'cursosModule',
+   'estudiantesModule',
+   'profesoresModule',
+   'asignaturasModule'
    
 ]);

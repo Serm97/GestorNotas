@@ -42,7 +42,7 @@ public class AsignaturaEntity implements Serializable {
    
     @ManyToOne
     @JoinColumn
-    private ProgramaEntity idPrograma;
+        private ProgramaEntity idPrograma;
 
     /* ----------------------- Constructor -----------------------*/
     public AsignaturaEntity() {

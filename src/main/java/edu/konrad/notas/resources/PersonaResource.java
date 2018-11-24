@@ -44,7 +44,7 @@ public class PersonaResource {
     }
     
     /** Metodo Obtener Persona
-        @Param idPersona @return Persona
+        @Param idPersona @return Persona    
     */
     @GET
     @Path("{id: \\d+}")
@@ -61,7 +61,6 @@ public class PersonaResource {
     */
     @POST
     public PersonaDTO createPersona(PersonaDTO persona){
-        System.out.println(persona);
         return new PersonaDTO(personaLogic.crearPersona(persona.toEntity()));
     }
     

@@ -30,7 +30,7 @@ public class CursoEntity implements Serializable{
     
     /* ----------------------- Columnas de la tabla Cursos -----------------------*/
     @Column(name = "cod_curso", nullable = false)
-    private Long codCurso;
+        private Long codCurso;
     
     @Column(name = "nom_curso")
     private String nomCurso;
@@ -45,7 +45,7 @@ public class CursoEntity implements Serializable{
     
     @ManyToOne //Relacion uno a muchos con HorarioEntity
     @JoinColumn
-    private HorarioEntity idHorario;
+    private String idHorario;
     
     /* ----------------------- Constructor -----------------------*/
 
@@ -94,16 +94,13 @@ public class CursoEntity implements Serializable{
         this.idProfesor = idProfesor;
     }
 
-    public HorarioEntity getIdHorario() {
+    public String getIdHorario() {
         return idHorario;
     }
 
-    public void setIdHorario(HorarioEntity idHorario) {
+    public void setIdHorario(String idHorario) {
         this.idHorario = idHorario;
     }
-    
-    
-    
     
     
     

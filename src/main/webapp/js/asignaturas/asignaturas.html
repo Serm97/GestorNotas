@@ -1,0 +1,86 @@
+<div ng-include="'views/header.html'"></div>
+
+<div class="container mt-3 mb-4">
+
+    <br><br><br>
+    <h3 class="m-4"><i class="fas fa-swatchbook"></i> Asignaturas</h3>
+    <div class="row container-fluid">
+
+        <div class="col-md-12">
+            <form class="mt-1 form" ng-submit="create           ()">
+                <!-- <p class="lead text-center"> Crear Personas</p> -->
+                <hr>
+                <div class="form-row mb-3">
+                    <div class="col-md-"></div>
+                    <div class="col-md-2">
+                            <input type="number" class="form-control" name="codAsignatura" ng-model="asignatura.codAsignatura"
+                            placeholder="Codigo" required>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" name="nomAsignatura" ng-model="asignatura.nomAsignatura"
+                            placeholder="Nombre Asignatura" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <input type="text" class="form-control" name="descAsignatura" ng-model="asignatura.descAsignatura"
+                                placeholder="Descripción" required>
+                    </div>
+                    <div class="col-md-2">
+                            <input type="number" class="form-control" name="numCreditos" ng-model="asignatura.numCreditos"
+                            placeholder="N° Creditos" required>
+                    </div>
+                    <div class="col-md-"></div>
+                </div>
+
+                <div class="form-row mb-3">
+                        <div class="col-md-"></div>
+                        <div class="col-md-6">
+                                <select class="form-control" ng-model="asignatura.idPrograma" ng-options="programa as programa.nomPrograma for programa in listaProgramas track by programa.idPrograma">
+                                          <option value="">--Elige programa--</option>
+                                    </select>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-3">
+                                <button class="btn btn-primary">Crear Asignatura</button>
+                        </div>
+                    </div>
+                
+                </form>
+        </div>
+    </div>
+    <br>  <hr><br>
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <table class="table table-bordered table-hover table-condensed">
+                <thead class="text-center">
+                    <th>Codigo Asignatura</th>
+                    <th>Nombre Asignatura</th>
+                    <th>Descripción</th>
+                    <th>Programa</th>
+                    <th>N° Creditos</th>
+                    <th colspan="2"><i class="fas fa-cogs fa-lg"></i></th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="asignatura in asignaturas">
+                        <td>{{asignatura.codAsignatura}}</td>
+                        <td>{{asignatura.nomAsignatura}}</td>
+                        <td>{{asignatura.descAsignatura}}</td>
+                        <td>{{asignatura.idPrograma.nivelAcademico}} - {{asignatura.idPrograma.nomPrograma}}</td>
+                        <td>{{asignatura.numCreditos}}</td>
+                        <td>
+                            <button class="btn btn-primary btn-block"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-danger" ng-click="eliminar(asignatura.idAsignatura)"><i class="fas fa-trash-alt"></i></button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+    <br><br><br>
+</div>
+
+<div ng-include="'views/footer.html'"></div>

@@ -8,15 +8,20 @@ cursosModule.controller('cursosController', ['$scope', '$http', '$state', functi
  
         $scope.crearCurso = function() {
 
-          $http.post('api/cursos', JSON.stringify($scope.curso)).then(function(response){
-            alert("Se ha inscrito a .");
-            $scope.curso = {};            
-            $state.reload();
+            let horario = '"' + $scope.curso.dia1 + '-' + $scope.curso.dia2 + ' | ' + $scope.curso.inicio + ' a ' + $scope.curso.fin;
+
+            console.log(horario);
             
-          }, function(error){
-              console.log(error);
+
+        //   $http.post('api/cursos', JSON.stringify($scope.curso)).then(function(response){
+        //     alert("Se ha inscrito a .");
+        //     $scope.curso = {};            
+        //     $state.reload();
+            
+        //   }, function(error){
+        //       console.log(error);
               
-          });
+        //   });
         };
  
 
@@ -36,4 +41,29 @@ cursosModule.controller('cursosController', ['$scope', '$http', '$state', functi
                 console.log(error);
             });
         };
+
+        $http.get('api/asignaturas').then(function (response) {
+            $scope.listaAsignaturas = new Array();
+            $scope.listaAsignaturas = response.data;
+            
+        }, function (error) {
+            console.log(error);
+        });
+
+        $http.get('api/profesores').then(function (response) {
+            $scope.listaProfesores = new Array();
+            $scope.listaProfesores = response.data;
+            console.log($scope.listaProfesores);
+            
+        }, function (error) {
+            console.log(error);
+        });
+
+        $http.get('api/programas').then(function (response) {
+            $scope.listaProgramas = new Array();
+            $scope.listaProgramas = response.data;
+            
+        }, function (error) {
+            console.log(error);
+        });
 }]);

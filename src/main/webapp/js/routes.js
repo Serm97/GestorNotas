@@ -45,5 +45,26 @@ app.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $ur
             controller: 'cursosController'
             }
         );
+
+        $stateProvider.state('estudiantes',{ 
+            url: '/estudiantes',
+            templateUrl: 'js/estudiantes/estudiantes.html',
+            controller: 'estudiantesController'
+            }
+        );
+
+        $stateProvider.state('profesores',{ 
+            url: '/profesores',
+            templateUrl: 'js/profesores/profesores.html',
+            controller: 'profesoresController'
+            }
+        );
+
+        $stateProvider.state('asignaturas',{ 
+            url: '/asignaturas',
+            templateUrl: 'js/asignaturas/asignaturas.html',
+            controller: 'asignaturasController'
+            }
+        );
         
 }]);

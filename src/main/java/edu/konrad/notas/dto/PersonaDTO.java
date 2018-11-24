@@ -5,6 +5,7 @@
  */
 package edu.konrad.notas.dto;
 
+import edu.konrad.notas.entities.DataMasterEntity;
 import edu.konrad.notas.entities.DataTypeEntity;
 import edu.konrad.notas.entities.PersonaEntity;
 import edu.konrad.notas.entities.ProgramaEntity;
@@ -23,8 +24,8 @@ public class PersonaDTO {
     private Long numDocumento;
     private String nombrePersona;
     private String apellidoPersona;
-    private DataTypeDTO idGenero;
-    private DataTypeDTO idTipoDocumento;
+    private String idGenero;
+    private String idTipoDocumento;
     private ProgramaDTO idPrograma;
 
     //    Constructor
@@ -40,21 +41,10 @@ public class PersonaDTO {
         this.idPersona = personaEntity.getIdPersona();
         this.numDocumento = personaEntity.getNumDocumento();
         this.nombrePersona = personaEntity.getNombrePersona();
+        this.idGenero = personaEntity.getIdGenero();
+        this.idTipoDocumento = personaEntity.getIdTipoDocumento();
         this.apellidoPersona = personaEntity.getApellidoPersona();
-        if (personaEntity.getIdGenero() != null) {
-            DataTypeEntity dataGenero = new DataTypeEntity();
-            dataGenero.setIdDataMaster(personaEntity.getIdGenero().getIdDataMaster());
-            dataGenero.setNombreType(personaEntity.getIdGenero().getNombreType());
-            dataGenero.setIdDataType(personaEntity.getIdGenero().getIdDataType());
-            this.idGenero = new DataTypeDTO(dataGenero);
-        }
-        if (personaEntity.getIdTipoDocumento() != null) {
-            DataTypeEntity idTipoDocumento = new DataTypeEntity();
-            idTipoDocumento.setIdDataMaster(personaEntity.getIdGenero().getIdDataMaster());
-            idTipoDocumento.setNombreType(personaEntity.getIdGenero().getNombreType());
-            idTipoDocumento.setIdDataType(personaEntity.getIdGenero().getIdDataType());
-            this.idTipoDocumento = new DataTypeDTO(idTipoDocumento);
-        }
+        
         if (personaEntity.getIdPrograma() != null) {
             ProgramaEntity program = new ProgramaEntity();
             program.setCodPrograma(personaEntity.getIdPrograma().getCodPrograma());
@@ -77,20 +67,9 @@ public class PersonaDTO {
         persona.setNumDocumento(this.numDocumento);
         persona.setNombrePersona(this.nombrePersona);
         persona.setApellidoPersona(this.apellidoPersona);
-        if (this.idGenero != null) {
-            DataTypeEntity dataGenero = new DataTypeEntity();
-            dataGenero.setIdDataMaster(this.idGenero.getIdDataMaster().toEntity());
-            dataGenero.setNombreType(this.idGenero.getNombreType());
-            dataGenero.setIdDataType(this.idGenero.getIdDataType());
-            persona.setIdGenero(dataGenero);
-        }
-        if (this.idTipoDocumento != null) {
-            DataTypeEntity idTipoDocumento = new DataTypeEntity();
-            idTipoDocumento.setIdDataMaster(this.idTipoDocumento.getIdDataMaster().toEntity());
-            idTipoDocumento.setNombreType(this.idTipoDocumento.getNombreType());
-            idTipoDocumento.setIdDataType(this.idTipoDocumento.getIdDataType());
-            persona.setIdTipoDocumento(idTipoDocumento);
-        }
+        persona.setIdGenero(this.idGenero);
+        persona.setIdTipoDocumento(this.idTipoDocumento);
+      
         if (this.idPrograma != null) {
             ProgramaEntity program = new ProgramaEntity();
             program.setCodPrograma(this.idPrograma.getCodPrograma());
@@ -149,21 +128,23 @@ public class PersonaDTO {
         this.apellidoPersona = apellidoPersona;
     }
 
-    public DataTypeDTO getIdGenero() {
+    public String getIdGenero() {
         return idGenero;
     }
 
-    public void setIdGenero(DataTypeDTO idGenero) {
+    public void setIdGenero(String idGenero) {
         this.idGenero = idGenero;
     }
 
-    public DataTypeDTO getIdTipoDocumento() {
+    public String getIdTipoDocumento() {
         return idTipoDocumento;
     }
 
-    public void setIdTipoDocumento(DataTypeDTO idTipoDocumento) {
+    public void setIdTipoDocumento(String idTipoDocumento) {
         this.idTipoDocumento = idTipoDocumento;
     }
+
+       
 
     public ProgramaDTO getIdPrograma() {
         return idPrograma;

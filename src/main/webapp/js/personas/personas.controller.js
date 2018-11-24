@@ -7,10 +7,55 @@ personasModule.controller('personasController', ['$scope', '$http', '$state', fu
         $scope.person = {};
  
         $scope.create = function() {
-          console.log($scope.person);   
 
           $http.post('api/personas', JSON.stringify($scope.person)).then(function(response){
             alert("Persona " + $scope.person.nombrePersona + " ha sido creada.")
+            persona = response.data;
+
+            switch($scope.person.rol){
+                case "Estudiante":
+                    estudiante = {};
+                    estudiante.codEstudiante = '500'+ getRandomInt(100, 200);
+                    estudiante.idPersona = persona;
+                    $http.post('api/estudiantes', JSON.stringify(estudiante)).then(function(response){
+                        alert("Asignado a la lista de Estudiantes.");
+                    }, function (error) {
+                        console.log(error);
+                    });   
+                    estudiante = {};                
+                break;
+
+                case "Profesor":
+                    profesor = {};
+                    profesor.codprofesor = '200'+ getRandomInt(200, 400);
+                    profesor.idPersona = persona;
+                    profesor.areaProfundizacion = "Por definir";
+
+                    $http.post('api/profesores', JSON.stringify(profesor)).then(function(response){
+                        alert("Asignado a la lista de Profesores.");
+                    }, function (error) {
+                        console.log(error);
+                    });
+                    profesor = {};
+                break;
+
+                case "Coordinador":
+                    coordinador = {};
+                    coordinador.codCoordinador = '111'+ getRandomInt(111, 500);
+                    coordinador.idPersona = persona;
+                    coordinador.idPrograma = persona.idPrograma;
+                    alert("Asignado a la lista de Coordinadores.");
+                    // $http.post('api/profesores', JSON.stringify(coordinador)).then(function(response){
+                       
+                    // }, function (error) {
+                    //     console.log(error);
+                    // });
+                    coordinador = {};
+                break;
+
+            }   
+
+
             $scope.person = {};
             $state.reload();
           }, function(error){
@@ -29,7 +74,7 @@ personasModule.controller('personasController', ['$scope', '$http', '$state', fu
  
 
         $http.get('api/personas').then(function (response) {
-            console.log(response);
+            console.log(response.data);
             $scope.personas = response.data;
         }, function (error) {
             console.log(error);
@@ -45,3 +90,7 @@ personasModule.controller('personasController', ['$scope', '$http', '$state', fu
             });
         };
 }]);
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }

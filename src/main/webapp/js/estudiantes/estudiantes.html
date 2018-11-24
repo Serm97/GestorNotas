@@ -3,10 +3,10 @@
 <div class="container mb-4">
         
         <br><br><br >
-        <h3 class="m-4"><i class="fas fa-male"></i><i class="fas fa-female"></i> Modúlo Personas</h3>
+        <h3 class="m-4"><i class="fas fa-user-circle"></i> Modúlo Estudiantes</h3>
         <div class="row">
 
-                <div class="col-md-5">
+                <!-- <div class="col-md-5">
                         <form class="mt-1 form" ng-submit="create           ()">
                             <p class="lead text-center"> Crear Personas</p>
                             <hr>
@@ -14,9 +14,9 @@
                                 <div class="col">
                                     <select class="form-control" name="idTipoDocumento" ng-model="person.idTipoDocumento" required>
                                         <option value="">Seleccione Tipo...</option>
-                                        <option value="TI">Tarjeta de Identidad</option>
-                                        <option value="CC">Cedula de Ciudadania</option>
-                                        <option value="CE">Cedula de Extranjeria</option>
+                                        <option value="21">Tarjeta de Identidad</option>
+                                        <option value="22">Cedula de Ciudadania</option>
+                                        <option value="23">Cedula de Extranjeria</option>
                                     </select>
                                 </div>
                                 <div class="col">
@@ -35,9 +35,9 @@
                                     </div>
                                 <select class="form-control" name="idGenero" ng-model="person.idGenero" required>
                                      <option value="" selected>--Elige Genero--</option>
-                                      <option value="Femenino">Femenino</option>
-                                      <option value="Masculino">Masculino</option>
-                                      <option value="Indefinido">Indefinido</option>
+                                      <option value="11">Femenino</option>
+                                      <option value="12">Masculino</option>
+                                      <option value="13">Indefinido</option>
                                     </select>
                             </div>
     
@@ -64,28 +64,28 @@
     
                             <button class="btn btn-block btn-primary">Crear</button>
                         </form>
-                    </div>
+                    </div> -->
 
-                <div class="col-md-7">
+                <div class="col-md-12">
                     
                     <table class="table table-bordered table-hover table-condensed">
                             <thead class="text-center">
+                                <th>Codígo</th>
                                 <th colspan="2">Nombre Completo</th>
-                                <th>Tipo</th>   
-                                <th>Documento</th>
-                                <th>Genero</th>
-                                <th>Modificar</th>
+                                <th>Programa</th>   
+                                <th>Nivel Academico</th>
+                                <th><i class="fas fa-cogs fa-lg"></i></th>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="persona in personas">
-                                    <td>{{persona.nombrePersona}}</td>
-                                    <td>{{persona.apellidoPersona}}</td>
-                                    <td>{{persona.idTipoDocumento}}</td>
-                                    <td>N° {{persona.numDocumento}}</td>
-                                    <td>{{persona.idGenero}}</td>
-                                    <td>
-                                        <button class="btn btn-primary btn-block"><i class="fas fa-edit"></i></button>
-                                        <!-- <button class="btn btn-danger" ng-click="eliminar(persona.idPersona)"><i class="fas fa-trash-alt"></i></button> -->
+                                <tr ng-repeat="estudiante in estudiantes">
+                                    <td>{{estudiante.codEstudiante}}</td>
+                                    <td>{{estudiante.idPersona.nombrePersona}}</td>
+                                    <td> {{estudiante.idPersona.apellidoPersona}}</td>
+                                    <td>{{estudiante.idPersona.idPrograma.nomPrograma}}</td>
+                                    <td>{{estudiante.idPersona.idPrograma.nivelAcademico}}</td>
+                                    <td colspan="2">
+                                        <button class="btn btn-primary"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-danger" ng-click="eliminar(estudiante.idEstudiante, estudiante.idPersona.idPersona)"><i class="fas fa-trash-alt"></i></button>
                                         
                                     </td>
                                 </tr>

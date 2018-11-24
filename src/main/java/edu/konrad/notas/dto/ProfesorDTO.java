@@ -65,8 +65,8 @@ public class ProfesorDTO {
             persona.setApellidoPersona(this.idPersona.getApellidoPersona());
             persona.setNombrePersona(this.idPersona.getNombrePersona());
             persona.setNumDocumento(this.idPersona.getNumDocumento());
-            persona.setIdGenero(this.idPersona.getIdGenero().toEntity());
-            persona.setIdTipoDocumento(this.idPersona.getIdTipoDocumento().toEntity());
+            persona.setIdGenero(this.idPersona.getIdGenero());
+            persona.setIdTipoDocumento(this.idPersona.getIdTipoDocumento());
             persona.setIdPrograma(this.idPersona.getIdPrograma().toEntity());
             persona.setIdPersona(this.idPersona.getIdPersona());
             profesor.setIdPersona(persona);
