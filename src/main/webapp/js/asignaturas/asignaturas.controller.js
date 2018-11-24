@@ -7,7 +7,7 @@ asignaturasModule.controller('asignaturasController', ['$scope', '$http', '$stat
         $scope.asignatura = {};
  
         $scope.create = function() {$http.post('api/asignaturas', JSON.stringify($scope.asignatura)).then(function(response){
-            alert("Se ha creado la Asignatura " + $scope.asignatura.nomAsignatura + " para el programa " + $scope.asignatura.idPrograma.nomPrograma);
+            swal("Exito", "Se ha creado la Asignatura " + $scope.asignatura.nomAsignatura + " para el programa " + $scope.asignatura.idPrograma.nomPrograma, "success");
             $scope.asignatura = {};
             $state.reload();
             
@@ -39,6 +39,7 @@ asignaturasModule.controller('asignaturasController', ['$scope', '$http', '$stat
                 console.log("Eliminado: " + id);
                 $state.reload();
             }, function (error) {
+                swal("Restricción", "No se puede eliminar la asignatura por que existen cursos dependientes.", "error");
                 console.log(error);
             });
         };

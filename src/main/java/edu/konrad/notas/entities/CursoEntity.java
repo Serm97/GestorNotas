@@ -43,8 +43,6 @@ public class CursoEntity implements Serializable{
     @JoinColumn
     private ProfesorEntity idProfesor;
     
-    @ManyToOne //Relacion uno a muchos con HorarioEntity
-    @JoinColumn
     private String idHorario;
     
     /* ----------------------- Constructor -----------------------*/

@@ -33,14 +33,14 @@
 
                 <div class="form-row mb-3">
                         <div class="col-md-"></div>
-                        <div class="col-md-6">
+                        <div class="col-md-6">  
                                 <select class="form-control" ng-model="asignatura.idPrograma" ng-options="programa as programa.nomPrograma for programa in listaProgramas track by programa.idPrograma">
                                           <option value="">--Elige programa--</option>
                                     </select>
                         </div>
                         <div class="col-md-2"></div>
                         <div class="col-md-3">
-                                <button class="btn btn-primary">Crear Asignatura</button>
+                                <button class="btn btn-primary btn-block float-right">Crear Asignatura</button>
                         </div>
                     </div>
                 
@@ -69,8 +69,8 @@
                         <td>{{asignatura.idPrograma.nivelAcademico}} - {{asignatura.idPrograma.nomPrograma}}</td>
                         <td>{{asignatura.numCreditos}}</td>
                         <td>
-                            <button class="btn btn-primary btn-block"><i class="fas fa-edit"></i></button>
-                            <button class="btn btn-danger" ng-click="eliminar(asignatura.idAsignatura)"><i class="fas fa-trash-alt"></i></button>
+                            <button class="btn btn-primary"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-danger float-right" ng-click="eliminar(asignatura.idAsignatura)"><i class="fas fa-trash-alt"></i></button>
 
                         </td>
                     </tr>

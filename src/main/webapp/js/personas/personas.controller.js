@@ -5,9 +5,10 @@ personasModule.controller('personasController', ['$scope', '$http', '$state', fu
         $scope.personas = new Array();
 
         $scope.person = {};
- 
-        $scope.create = function() {
 
+        // Crear Persona 
+        $scope.create = function() {
+            
           $http.post('api/personas', JSON.stringify($scope.person)).then(function(response){
             alert("Persona " + $scope.person.nombrePersona + " ha sido creada.")
             persona = response.data;
@@ -64,6 +65,7 @@ personasModule.controller('personasController', ['$scope', '$http', '$state', fu
           });
         };
 
+        // ComboBox
         $http.get('api/programas').then(function (response) {
             $scope.listaProgramas = new Array();
             $scope.listaProgramas = response.data;
@@ -72,7 +74,7 @@ personasModule.controller('personasController', ['$scope', '$http', '$state', fu
             console.log(error);
         });
  
-
+        //Listar Personas
         $http.get('api/personas').then(function (response) {
             console.log(response.data);
             $scope.personas = response.data;
@@ -80,6 +82,7 @@ personasModule.controller('personasController', ['$scope', '$http', '$state', fu
             console.log(error);
         });
 
+        // Eliminar Persona
         $scope.eliminar = function (id) {
             $http.delete('api/personas/' + id).then(function (response) {
                 //Recargar la pag
@@ -88,6 +91,32 @@ personasModule.controller('personasController', ['$scope', '$http', '$state', fu
             }, function (error) {
                 console.log(error);
             });
+        };
+
+        // Encontrar Persona
+        $scope.encontrar = function (id) {
+            
+            $http.get('api/personas/'+id).then(function (response) {
+                $scope.person = response.data;
+                
+            }, function (error) {
+                console.log(error);
+            });
+        };
+
+        // Actualizar Persona
+        $scope.actualizarPersona = function (id) {
+            console.log($scope.curso);
+            
+            if ($scope.person.idTipoDocumento && $scope.person.numDocumento && $scope.person.nombrePersona && $scope.person.apellidoPersona && $scope.person.idGenero && $scope.person.idPrograma && $scope.person.rol){
+                $http.put('api/personas/'+id, JSON.stringify($scope.person)).then(function (response) {
+                    $scope.person = {};
+                    swal("Actualizado", "", "success");
+                    $state.reload();
+                }, function (error) {
+                    console.log(error);
+                });
+            }
         };
 }]);
 
