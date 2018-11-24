@@ -59,4 +59,12 @@ public class UsuarioPersistence {
         em.remove(usuarioEliminar);
     }
 
+    public List<UsuarioEntity> login(UsuarioEntity usuario) {
+        Query queryUsuario = em.createQuery("select u from usuarios u where "
+                + "u.emailUsuario = '"+usuario.getEmailUsuario()+"' "
+                        + "AND u.clave = '"+usuario.getClave()+"' ");
+        
+        return queryUsuario.getResultList();
+    }
+
 }

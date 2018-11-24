@@ -38,11 +38,13 @@ public class PersonaEntity implements Serializable{
     @Column(name = "ape_persona")
     private String apellidoPersona;
     
-    @Column
-    private String idGenero;
+    @ManyToOne //Relacion uno a muchos con DataTypemaster
+    @JoinColumn(name = "id_genero")
+    private DataTypeEntity idGenero;
     
-    @Column
-    private String idTipoDocumento;
+    @ManyToOne //Relacion uno a muchos con DataTypemaster
+    @JoinColumn(name = "id_tipo_documento")
+    private DataTypeEntity idTipoDocumento;
     
     @OneToOne  //Relacion uno a uno con ProgramaEntity
     @JoinColumn(name = "id_programa")
@@ -87,19 +89,19 @@ public class PersonaEntity implements Serializable{
         this.apellidoPersona = apellidoPersona;
     }
 
-    public String getIdGenero() {
+    public DataTypeEntity getIdGenero() {
         return idGenero;
     }
 
-    public void setIdGenero(String idGenero) {
+    public void setIdGenero(DataTypeEntity idGenero) {
         this.idGenero = idGenero;
     }
 
-    public String getIdTipoDocumento() {
+    public DataTypeEntity getIdTipoDocumento() {
         return idTipoDocumento;
     }
 
-    public void setIdTipoDocumento(String idTipoDocumento) {
+    public void setIdTipoDocumento(DataTypeEntity idTipoDocumento) {
         this.idTipoDocumento = idTipoDocumento;
     }
 

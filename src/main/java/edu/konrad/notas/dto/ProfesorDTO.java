@@ -55,7 +55,7 @@ public class ProfesorDTO {
      *
      * @return ProductoEntity
      */
-    public ProfesorEntity toEntity() {
+     public ProfesorEntity toEntity() {
         ProfesorEntity profesor = new ProfesorEntity();
         profesor.setIdProfesor(this.idProfesor);
         profesor.setCodprofesor(this.codprofesor);
@@ -65,8 +65,8 @@ public class ProfesorDTO {
             persona.setApellidoPersona(this.idPersona.getApellidoPersona());
             persona.setNombrePersona(this.idPersona.getNombrePersona());
             persona.setNumDocumento(this.idPersona.getNumDocumento());
-            persona.setIdGenero(this.idPersona.getIdGenero());
-            persona.setIdTipoDocumento(this.idPersona.getIdTipoDocumento());
+            persona.setIdGenero(this.idPersona.getIdGenero().toEntity());
+            persona.setIdTipoDocumento(this.idPersona.getIdTipoDocumento().toEntity());
             persona.setIdPrograma(this.idPersona.getIdPrograma().toEntity());
             persona.setIdPersona(this.idPersona.getIdPersona());
             profesor.setIdPersona(persona);

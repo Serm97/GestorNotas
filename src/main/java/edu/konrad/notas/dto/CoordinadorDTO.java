@@ -62,7 +62,7 @@ public class CoordinadorDTO {
      *
      * @return ProductoEntity
      */
-    public CoordinadorEntity toEntity() {
+     public CoordinadorEntity toEntity() {
         CoordinadorEntity coordinador = new CoordinadorEntity();
         coordinador.setIdCoordinador(this.idCoordinador);
         coordinador.setCodCoordinador(this.codCoordinador);
@@ -71,8 +71,8 @@ public class CoordinadorDTO {
             persona.setApellidoPersona(this.idPersona.getApellidoPersona());
             persona.setNombrePersona(this.idPersona.getNombrePersona());
             persona.setNumDocumento(this.idPersona.getNumDocumento());
-            persona.setIdGenero(this.idPersona.getIdGenero());
-            persona.setIdTipoDocumento(this.idPersona.getIdTipoDocumento());
+            persona.setIdGenero(this.idPersona.getIdGenero().toEntity());
+            persona.setIdTipoDocumento(this.idPersona.getIdTipoDocumento().toEntity());
             persona.setIdPrograma(this.idPersona.getIdPrograma().toEntity());
             persona.setIdPersona(this.idPersona.getIdPersona());
             coordinador.setIdPersona(persona);
@@ -85,8 +85,7 @@ public class CoordinadorDTO {
             program.setIdPrograma(this.idPrograma.getIdPrograma());
             coordinador.setIdPrograma(program);
         }
-
-        return coordinador;
+         return coordinador;
     }
 
     /**

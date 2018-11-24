@@ -48,7 +48,8 @@ public class UsuarioLogic {
     }
 
     /**
-     * Metodo que conecta la logica con la transaccion para INSERT INTO Usuarios VALUES()
+     * Metodo que conecta la logica con la transaccion para INSERT INTO Usuarios
+     * VALUES()
      *
      * @param usuarioCrear
      * @return
@@ -59,7 +60,8 @@ public class UsuarioLogic {
     }
 
     /**
-     * Metodo que conecta la logica con la transaccion UPDATE SET * WHERE Usuario
+     * Metodo que conecta la logica con la transaccion UPDATE SET * WHERE
+     * Usuario
      *
      * @param id
      * @param usuarioActualizar
@@ -78,6 +80,18 @@ public class UsuarioLogic {
      */
     public void eliminarUsuario(Long id) {
         persistence.remove(id);
+    }
+
+    public UsuarioEntity login(UsuarioEntity usuario) {
+        List<UsuarioEntity> users = null;
+        if (!"".equals(usuario.getEmailUsuario()) && !"".equals(usuario.getClave())) {
+            users = persistence.login(usuario);
+            if (users != null) {
+                return users.get(0);
+            }
+        }
+        return null;
+
     }
 
 }
