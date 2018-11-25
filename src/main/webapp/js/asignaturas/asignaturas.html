@@ -7,44 +7,45 @@
     <div class="row container-fluid">
 
         <div class="col-md-12">
-            <form class="mt-1 form" ng-submit="create           ()">
+            <form class="mt-1 form">
                 <!-- <p class="lead text-center"> Crear Personas</p> -->
                 <hr>
                 <div class="form-row mb-3">
                     <div class="col-md-"></div>
                     <div class="col-md-2">
-                            <input type="number" class="form-control" name="codAsignatura" ng-model="asignatura.codAsignatura"
-                            placeholder="Codigo" required>
+                        <input type="number" class="form-control" name="codAsignatura" ng-model="asignatura.codAsignatura"
+                               placeholder="Codigo" required>
                     </div>
                     <div class="col-md-3">
                         <input type="text" class="form-control" name="nomAsignatura" ng-model="asignatura.nomAsignatura"
-                            placeholder="Nombre Asignatura" required>
+                               placeholder="Nombre Asignatura" required>
                     </div>
                     <div class="col-md-4 mb-3">
                         <input type="text" class="form-control" name="descAsignatura" ng-model="asignatura.descAsignatura"
-                                placeholder="Descripción" required>
+                               placeholder="Descripción" required>
                     </div>
                     <div class="col-md-2">
-                            <input type="number" class="form-control" name="numCreditos" ng-model="asignatura.numCreditos"
-                            placeholder="N° Creditos" required>
+                        <input type="number" class="form-control" name="numCreditos" ng-model="asignatura.numCreditos"
+                               placeholder="N° Creditos" required>
                     </div>
                     <div class="col-md-"></div>
                 </div>
 
                 <div class="form-row mb-3">
-                        <div class="col-md-"></div>
-                        <div class="col-md-6">  
-                                <select class="form-control" ng-model="asignatura.idPrograma" ng-options="programa as programa.nomPrograma for programa in listaProgramas track by programa.idPrograma">
-                                          <option value="">--Elige programa--</option>
-                                    </select>
-                        </div>
-                        <div class="col-md-2"></div>
-                        <div class="col-md-3">
-                                <button class="btn btn-primary btn-block float-right">Crear Asignatura</button>
-                        </div>
+                    <div class="col-md-"></div>
+                    <div class="col-md-6">  
+                        <select class="form-control" ng-model="asignatura.idPrograma" ng-options="programa as programa.nomPrograma for programa in listaProgramas track by programa.idPrograma">
+                              <option value="">--Elige programa--</option>
+                        </select>
                     </div>
-                
-                </form>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary btn-block float-right" ng-if="!asignatura.idAsignatura" ng-click="create()">Crear Asignatura</button>
+                        <button class="btn btn-primary btn-block float-right" ng-if="asignatura.idAsignatura" ng-click="actualizar()">Actualizar Asignatura</button>
+                    </div>
+                </div>
+
+            </form>
         </div>
     </div>
     <br>  <hr><br>
@@ -54,12 +55,12 @@
 
             <table class="table table-bordered table-hover table-condensed">
                 <thead class="text-center">
-                    <th>Codigo Asignatura</th>
-                    <th>Nombre Asignatura</th>
-                    <th>Descripción</th>
-                    <th>Programa</th>
-                    <th>N° Creditos</th>
-                    <th colspan="2"><i class="fas fa-cogs fa-lg"></i></th>
+                <th>Codigo Asignatura</th>
+                <th>Nombre Asignatura</th>
+                <th>Descripción</th>
+                <th>Programa</th>
+                <th>N° Creditos</th>
+                <th colspan="2"><i class="fas fa-cogs fa-lg"></i></th>
                 </thead>
                 <tbody>
                     <tr ng-repeat="asignatura in asignaturas">
@@ -69,7 +70,7 @@
                         <td>{{asignatura.idPrograma.nivelAcademico}} - {{asignatura.idPrograma.nomPrograma}}</td>
                         <td>{{asignatura.numCreditos}}</td>
                         <td>
-                            <button class="btn btn-primary"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-primary" ng-click="editar(asignatura.idAsignatura)"><i class="fas fa-edit"></i></button>
                             <button class="btn btn-danger float-right" ng-click="eliminar(asignatura.idAsignatura)"><i class="fas fa-trash-alt"></i></button>
 
                         </td>

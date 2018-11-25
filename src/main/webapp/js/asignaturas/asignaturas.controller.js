@@ -1,30 +1,48 @@
 var asignaturasModule = angular.module("asignaturasModule");
 
-asignaturasModule.controller('asignaturasController', ['$scope', '$http', '$state', function($scope, $http, $state){
-        
-        $scope.asignaturas = new Array();
+asignaturasModule.controller('asignaturasController', ['$scope', '$http', '$state', function ($scope, $http, $state) {
 
+        $scope.asignaturas = new Array();
         $scope.asignatura = {};
- 
-        $scope.create = function() {$http.post('api/asignaturas', JSON.stringify($scope.asignatura)).then(function(response){
-            swal("Exito", "Se ha creado la Asignatura " + $scope.asignatura.nomAsignatura + " para el programa " + $scope.asignatura.idPrograma.nomPrograma, "success");
-            $scope.asignatura = {};
-            $state.reload();
-            
-          }, function(error){
-              console.log(error);
-              
-          });
+
+        $scope.create = function () {
+            $http.post('api/asignaturas', JSON.stringify($scope.asignatura)).then(function (response) {
+                swal("Exito", "Se ha creado la Asignatura " + $scope.asignatura.nomAsignatura + " para el programa " + $scope.asignatura.idPrograma.nomPrograma, "success");
+                $scope.asignatura = {};
+                $state.reload();
+
+            }, function (error) {
+                console.log(error);
+            });
+        };
+
+        $scope.editar = function (id) {
+            $http.get('api/asignaturas/' + id).then(function (response) {
+                $scope.asignatura = response.data;
+            }, function (error) {
+                console.log(error);
+            });
+        };
+
+        $scope.actualizar = function () {
+            $http.put('api/asignaturas/'+$scope.asignatura.idAsignatura, JSON.stringify($scope.asignatura)).then(function (response) {
+                swal("Exito", "Se ha actualizado la Asignatura " + $scope.asignatura.nomAsignatura + " para el programa " + $scope.asignatura.idPrograma.nomPrograma, "success");
+                $scope.asignatura = {};
+                $state.reload();
+
+            }, function (error) {
+                console.log(error);
+            });
         };
 
         $http.get('api/programas').then(function (response) {
             $scope.listaProgramas = new Array();
             $scope.listaProgramas = response.data;
-            
+
         }, function (error) {
             console.log(error);
         });
- 
+
 
         $http.get('api/asignaturas').then(function (response) {
             console.log(response.data);
@@ -43,8 +61,8 @@ asignaturasModule.controller('asignaturasController', ['$scope', '$http', '$stat
                 console.log(error);
             });
         };
-}]);
+    }]);
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
-  }
+}
