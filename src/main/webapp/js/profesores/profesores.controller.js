@@ -23,6 +23,7 @@ profesoresModule.controller('profesoresController', ['$scope', '$http', '$state'
         });
 
         $scope.eliminar = function (id, person) {
+            
             $http.delete('api/profesores/' + id).then(function (response) {
 
                 $http.delete('api/personas/' + person).then(function (response) {
@@ -33,7 +34,7 @@ profesoresModule.controller('profesoresController', ['$scope', '$http', '$state'
                     console.log(error);
                 });
 
-                alert("El Profesor ha sido eliminado al igual que sus datos personales.");
+                swal("El Profesor ha sido eliminado al igual que sus datos personales.");
                 //Recargar la pag
                 console.log("Eliminado: " + id);
                 $state.reload();

@@ -10,6 +10,7 @@ loginModule.controller('loginController', ['$scope', '$http', '$state', function
                         $state.go('inicio');
                     }                    
                 }, function (error) {
+                    swal("Prohibido", "Revise los datos ingresados.", "error");
                     console.log(error);
                 });
             };

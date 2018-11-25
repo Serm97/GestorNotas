@@ -33,7 +33,7 @@ estudiantesModule.controller('estudiantesController', ['$scope', '$http', '$stat
                     console.log(error);
                 });
 
-                alert("El estudiante ha sido eliminado al igual que sus datos personales.");
+                swal("El estudiante ha sido eliminado al igual que sus datos personales.");
                 //Recargar la pag
                 console.log("Eliminado: " + id);
                 $state.reload();

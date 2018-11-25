@@ -31,7 +31,6 @@ public class ApplicationConfig extends Application{
         resources.add(edu.konrad.notas.resources.CursoResource.class);
         resources.add(edu.konrad.notas.resources.DataTypeResource.class);
         resources.add(edu.konrad.notas.resources.EstudianteResource.class);
-        resources.add(edu.konrad.notas.resources.HorarioResource.class);
         resources.add(edu.konrad.notas.resources.InscripcionResource.class);
         resources.add(edu.konrad.notas.resources.PersonaResource.class);
         resources.add(edu.konrad.notas.resources.ProfesorResource.class);

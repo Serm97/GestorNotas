@@ -6,66 +6,6 @@
         <h3 class="m-4"><i class="fas fa-user-tie"></i> Modúlo Profesores</h3>
         <div class="row">
 
-                <!-- <div class="col-md-5">
-                        <form class="mt-1 form" ng-submit="create()">
-                            <p class="lead text-center"> Crear Personas</p>
-                            <hr>
-                            <div class="form-row mb-3">
-                                <div class="col">
-                                    <select class="form-control" name="idTipoDocumento" ng-model="person.idTipoDocumento" required>
-                                        <option value="">Seleccione Tipo...</option>
-                                        <option value="21">Tarjeta de Identidad</option>
-                                        <option value="22">Cedula de Ciudadania</option>
-                                        <option value="23">Cedula de Extranjeria</option>
-                                    </select>
-                                </div>
-                                <div class="col">
-                                <input type="number" class="form-control" name="numDocumento" ng-model="person.numDocumento" placeholder="N° de Documento" required>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <input type="text" class="form-control" name="nombrePersona" ng-model="person.nombrePersona" placeholder="Nombre de la Persona" required>
-                            </div>
-                            <div class="mb-3">
-                                <input type="text" class="form-control" name="apellidoPersona" ng-model="person.apellidoPersona" placeholder="Apellidos de la Persona" required>
-                            </div>
-                            <div class="input-group mb-4">
-                                    <div class="input-group-prepend">
-                                      <label class="input-group-text">Genéro</label>
-                                    </div>
-                                <select class="form-control" name="idGenero" ng-model="person.idGenero" required>
-                                     <option value="" selected>--Elige Genero--</option>
-                                      <option value="11">Femenino</option>
-                                      <option value="12">Masculino</option>
-                                      <option value="13">Indefinido</option>
-                                    </select>
-                            </div>
-    
-                            <div class="input-group mb-4">
-                                    <div class="input-group-prepend">
-                                      <label class="input-group-text">Programa</label>
-                                    </div>
-                                    <select class="form-control" ng-model="person.idPrograma" ng-options="programa as programa.nomPrograma for programa in listaProgramas track by programa.idPrograma" >
-                                          <option value="">--Elige programa--</option>
-                                    </select>
-                            </div>
-
-                            <div class="input-group mb-4">
-                                    <div class="input-group-prepend">
-                                      <label class="input-group-text">Rol</label>
-                                    </div>
-                                <select class="form-control" name="rol" ng-model="person.rol" required>
-                                     <option value="" selected>--Elige Rol--</option>
-                                      <option value="Estudiante">Estudiante</option>
-                                      <option value="Profesor">Profesor</option>
-                                      <option value="Coordinador">Coordinador</option>
-                                    </select>
-                            </div>
-    
-                            <button class="btn btn-block btn-primary">Crear</button>
-                        </form>
-                    </div> -->
-
                 <div class="col-md-12">
                     
                     <table class="table table-bordered table-hover table-condensed">
@@ -87,7 +27,7 @@
                                     <td>{{profesor.areaProfundizacion}}</td>
                                     <td colspan="2">
                                         <button class="btn btn-primary"><i class="fas fa-edit"></i></button>
-                                        <button class="btn btn-danger" ng-click="eliminar(profesor.idEstudiante, profesor.idPersona.idPersona)"><i class="fas fa-trash-alt"></i></button>
+                                        <button class="btn btn-danger" ng-click="eliminar(profesor.idProfesor, profesor.idPersona.idPersona)"><i class="fas fa-trash-alt"></i></button>
                                         
                                     </td>
                                 </tr>

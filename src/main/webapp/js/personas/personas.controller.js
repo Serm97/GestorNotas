@@ -11,6 +11,8 @@ personasModule.controller('personasController', ['$scope', '$http', '$state', fu
                 persona = response.data;
                 $http.get('api/datatypes/roles/' + $scope.person.rol.idRol).then(function (response) {
                     rol = response.data;
+                    console.log(rol);
+                    
                     switch (rol.nombreRol) {
                         case "Estudiante":
                             estudiante = {};

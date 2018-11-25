@@ -82,7 +82,7 @@ public class InscripcionDTO {
             CursoEntity curso = new CursoEntity();
             curso.setCodCurso(this.idCurso.getCodCurso());
             curso.setNomCurso(this.idCurso.getNomCurso());
-            curso.setIdHorario(this.idCurso.getIdHorario().toEntity());
+            curso.setIdHorario(this.idCurso.getIdHorario());
             curso.setIdProfesor(this.idCurso.getIdProfesor().toEntity());
             curso.setIdAsignatura(this.idCurso.getIdAsignatura().toEntity());
             curso.setIdCurso(this.idCurso.getIdCurso());

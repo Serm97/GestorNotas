@@ -43,9 +43,7 @@ public class CursoEntity implements Serializable{
     @JoinColumn
     private ProfesorEntity idProfesor;
 
-    @ManyToOne //Relacion uno a muchos con HorarioEntity
-    @JoinColumn
-    private HorarioEntity idHorario;
+    private String idHorario;
 
     /* ----------------------- Constructor -----------------------*/
 
@@ -94,17 +92,13 @@ public class CursoEntity implements Serializable{
         this.idProfesor = idProfesor;
     }
 
-    public HorarioEntity getIdHorario() {
+    public String getIdHorario() {
         return idHorario;
     }
 
-    public void setIdHorario(HorarioEntity idHorario) {
+    public void setIdHorario(String idHorario) {
         this.idHorario = idHorario;
     }
 
-
-
-
-
-
+        
 }

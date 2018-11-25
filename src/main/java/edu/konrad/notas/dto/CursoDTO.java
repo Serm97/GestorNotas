@@ -7,7 +7,6 @@ package edu.konrad.notas.dto;
 
 import edu.konrad.notas.entities.AsignaturaEntity;
 import edu.konrad.notas.entities.CursoEntity;
-import edu.konrad.notas.entities.HorarioEntity;
 import edu.konrad.notas.entities.ProfesorEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +24,7 @@ public class CursoDTO {
     private String nomCurso;
     private AsignaturaDTO idAsignatura;
     private ProfesorDTO idProfesor;
-    private HorarioDTO idHorario;
+    private String idHorario;
 
     // Contructor
     public CursoDTO() {
@@ -40,16 +39,8 @@ public class CursoDTO {
         this.idCurso = cursoEntity.getIdCurso();
         this.codCurso = cursoEntity.getCodCurso();
         this.nomCurso = cursoEntity.getNomCurso();
-        if (cursoEntity.getIdHorario() != null){
-            HorarioEntity horario = new HorarioEntity();
-            horario.setDia(cursoEntity.getIdHorario().getDia());
-            horario.setHoraFin(cursoEntity.getIdHorario().getHoraFin());
-            horario.setHoraInicio(cursoEntity.getIdHorario().getHoraInicio());
-            horario.setJornada(cursoEntity.getIdHorario().getJornada());
-            horario.setIdHorario(cursoEntity.getIdHorario().getIdHorario());            
-            this.idHorario = new HorarioDTO(horario);
-        }
-        
+        this.idHorario = cursoEntity.getIdHorario();
+                
         if (cursoEntity.getIdAsignatura() != null) {
             AsignaturaEntity asignatura = new AsignaturaEntity();
             asignatura.setCodAsignatura(cursoEntity.getIdAsignatura().getCodAsignatura());
@@ -83,15 +74,7 @@ public class CursoDTO {
         curso.setIdCurso(this.idCurso);
         curso.setCodCurso(this.codCurso);
         curso.setNomCurso(this.nomCurso);
-        if (this.idHorario != null){
-            HorarioEntity horario = new HorarioEntity();
-            horario.setDia(this.idHorario.getDia());
-            horario.setHoraFin(this.idHorario.getHoraFin());
-            horario.setHoraInicio(this.idHorario.getHoraInicio());
-            horario.setJornada(this.idHorario.getJornada());
-            horario.setIdHorario(this.idHorario.getIdHorario());            
-            curso.setIdHorario(horario);
-        }
+        curso.setIdHorario(this.idHorario);
         if (this.idAsignatura != null) {
             AsignaturaEntity asignatura = new AsignaturaEntity();
             asignatura.setCodAsignatura(this.idAsignatura.getCodAsignatura());
@@ -168,14 +151,15 @@ public class CursoDTO {
         this.idProfesor = idProfesor;
     }
 
-    public HorarioDTO getIdHorario() {
+    public String getIdHorario() {
         return idHorario;
     }
 
-    public void setIdHorario(HorarioDTO idHorario) {
+    public void setIdHorario(String idHorario) {
         this.idHorario = idHorario;
     }
 
+  
     
 
 }
