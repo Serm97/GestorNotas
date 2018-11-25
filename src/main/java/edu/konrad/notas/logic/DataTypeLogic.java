@@ -80,4 +80,9 @@ public class DataTypeLogic {
         persistence.remove(id);
     }
 
+    public List<DataTypeEntity> obtenerDataTypeByMaster(String nombre) {
+        List<DataTypeEntity> listaDataType = persistence.findByMaster(nombre);
+        return listaDataType;
+    }
+
 }

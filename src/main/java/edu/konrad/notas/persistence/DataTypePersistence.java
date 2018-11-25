@@ -58,4 +58,9 @@ public class DataTypePersistence {
         em.remove(dataTypeEliminar);
     }
 
+    public List<DataTypeEntity> findByMaster(String nombre) {
+        Query queryDataType = em.createQuery("select d from dataType d where d.idDataMaster.nombreData LIKE '%"+nombre+"%'");
+        return queryDataType.getResultList();
+    }
+
 }
