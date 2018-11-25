@@ -22,7 +22,7 @@ cursosModule.controller('cursosController', ['$scope', '$http', '$state', functi
             cursoCrear.idHorario =  horario;
             
             $http.post('api/cursos', JSON.stringify(cursoCrear)).then(function(response){
-            alert("Se ha inscrito a " +  cursoCrear.nomCurso);
+            swal("Se ha inscrito a " +  cursoCrear.nomCurso, "success");
             $scope.curso = {};            
             $state.reload();
             

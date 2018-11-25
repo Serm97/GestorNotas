@@ -7,7 +7,7 @@ personasModule.controller('personasController', ['$scope', '$http', '$state', fu
         $scope.create = function () {
             console.log(JSON.stringify($scope.person));
             $http.post('api/personas', JSON.stringify($scope.person)).then(function (response) {
-                alert("Persona " + $scope.person.nombrePersona + " ha sido creada.");
+                swal("Creado", "Persona " + $scope.person.nombrePersona + " ha sido creada.", "success");
                 persona = response.data;
                 $http.get('api/datatypes/roles/' + $scope.person.rol.idRol).then(function (response) {
                     rol = response.data;
@@ -17,7 +17,7 @@ personasModule.controller('personasController', ['$scope', '$http', '$state', fu
                             estudiante.codEstudiante = '500' + getRandomInt(100, 200);
                             estudiante.idPersona = persona;
                             $http.post('api/estudiantes', JSON.stringify(estudiante)).then(function (response) {
-                                alert("Asignado a la lista de Estudiantes.");
+                                swal("Asignado a la lista de Estudiantes.");
                             }, function (error) {
                                 console.log(error);
                             });
@@ -31,7 +31,7 @@ personasModule.controller('personasController', ['$scope', '$http', '$state', fu
                             profesor.areaProfundizacion = "Por definir";
 
                             $http.post('api/profesores', JSON.stringify(profesor)).then(function (response) {
-                                alert("Asignado a la lista de Profesores.");
+                                swal("Asignado a la lista de Profesores.");
                             }, function (error) {
                                 console.log(error);
                             });
@@ -43,12 +43,12 @@ personasModule.controller('personasController', ['$scope', '$http', '$state', fu
                             coordinador.codCoordinador = '111' + getRandomInt(111, 500);
                             coordinador.idPersona = persona;
                             coordinador.idPrograma = persona.idPrograma;
-                            alert("Asignado a la lista de Coordinadores.");
-                            // $http.post('api/profesores', JSON.stringify(coordinador)).then(function(response){
+                            swal("Asignado a la lista de Coordinadores.");
+                            $http.post('api/coordinadores', JSON.stringify(coordinador)).then(function(response){
 
-                            // }, function (error) {
-                            //     console.log(error);
-                            // });
+                            }, function (error) {
+                                console.log(error);
+                            });
                             coordinador = {};
                             break;
 
@@ -75,7 +75,7 @@ personasModule.controller('personasController', ['$scope', '$http', '$state', fu
 
         $scope.actualizar = function () {
             $http.put('api/personas/' + $scope.person.idPersona, JSON.stringify($scope.person)).then(function (response) {
-                alert("Persona " + $scope.person.nombrePersona + " ha sido actualizado.");
+                swal("Persona " + $scope.person.nombrePersona + " ha sido actualizado.");
                 $scope.person = {};
                 $state.reload();
             }, function (error) {
