@@ -7,7 +7,7 @@
     <div class="row">
 
         <div class="col-md-5">
-            <form class="mt-1 form" ng-submit="create()">
+            <form class="mt-1 form">
                 <p class="lead text-center"> Crear Personas</p>
                 <hr>
                 <div class="form-row mb-3">
@@ -44,7 +44,7 @@
                     </select>
                 </div>
 
-                <div class="input-group mb-4">
+                <div class="input-group mb-4" ng-if="!person.idPersona" >
                     <div class="input-group-prepend">
                         <label class="input-group-text">Rol</label>
                     </div>
@@ -53,7 +53,8 @@
                     </select>
                 </div>
 
-                <button class="btn btn-block btn-primary">Crear</button>
+                <button class="btn btn-block btn-primary"  ng-if="!person.idPersona" ng-click="create()">Crear</button>
+                <button class="btn btn-block btn-primary"  ng-if="person.idPersona" ng-click="actualizar()">Actualizar</button>
             </form>
         </div>
 
@@ -77,6 +78,7 @@
                         <td>
                             <!--<button class="btn btn-primary btn-block"><i class="fas fa-edit"></i></button>-->
                             <!-- <button class="btn btn-danger" ng-click="eliminar(persona.idPersona)"><i class="fas fa-trash-alt"></i></button> -->
+                            <!--<button class="btn btn-primary btn-block" ui-sref="editarPersonas({id:persona.idPersona})"><i class="fas fa-edit"></i></button>-->
                             <button class="btn btn-primary btn-block" ng-click="editar(persona.idPersona)"><i class="fas fa-edit"></i></button>
 
                         </td>

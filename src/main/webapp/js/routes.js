@@ -31,7 +31,7 @@ app.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $ur
             controller: 'personasController'
             }
         );
-
+    
         $stateProvider.state('inscripciones',{ 
             url: '/inscripciones',
             templateUrl: 'js/inscripciones/inscripciones.html',

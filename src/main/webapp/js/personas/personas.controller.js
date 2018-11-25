@@ -2,8 +2,8 @@ var personasModule = angular.module("personasModule");
 
 personasModule.controller('personasController', ['$scope', '$http', '$state', function ($scope, $http, $state) {
         $scope.personas = new Array();
-
         $scope.person = {};
+        $scope.isUpdate = false;
 
         $scope.create = function () {
             console.log(JSON.stringify($scope.person));
@@ -59,7 +59,7 @@ personasModule.controller('personasController', ['$scope', '$http', '$state', fu
                 });
 
                 $scope.person = {};
-//                $state.reload();
+                $state.reload();
             }, function (error) {
                 console.log(error);
 
@@ -69,11 +69,21 @@ personasModule.controller('personasController', ['$scope', '$http', '$state', fu
         $scope.editar = function (id) {
             $http.get('api/personas/' + id).then(function (response) {
                 $scope.person = response.data;
-
+                $scope.isUpdate = true;
             }, function (error) {
                 console.log(error);
             });
+        };
 
+        $scope.actualizar = function () {
+            $http.put('api/personas/' + $scope.person.idPersona, JSON.stringify($scope.person)).then(function (response) {
+                alert("Persona " + $scope.person.nombrePersona + " ha sido actualizado.");
+                $scope.person = {};
+                $scope.isUpdate = false;
+                $state.reload();
+            }, function (error) {
+                console.log(error);
+            });
         };
 
         // ComboBox

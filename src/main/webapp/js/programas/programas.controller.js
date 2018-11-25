@@ -8,7 +8,6 @@ programasModule.controller('programasController', ['$scope', '$http', '$state', 
     
         // Crear Programa
         $scope.crearPrograma = function() {
-
           $http.post('api/programas', JSON.stringify($scope.programa)).then(function(response){
             swal("Exito", $scope.programa.nomPrograma + " ha sido creado.", "success");
             $scope.programa = {};            
