@@ -21,7 +21,6 @@ inscripcionesModule.controller('inscripcionesController', ['$scope', '$http', '$
               
           });
 
-          
         };
  
 

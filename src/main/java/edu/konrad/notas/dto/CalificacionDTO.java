@@ -65,7 +65,7 @@ public class CalificacionDTO {
         if(this.idInscripcion!=null){
             InscripcionEntity inscripcion = new InscripcionEntity();
             inscripcion.setIdCurso(this.idInscripcion.getIdCurso().toEntity());
-            inscripcion.setIdEstado(this.idInscripcion.getIdEstado().toEntity());
+            inscripcion.setIdEstado(this.idInscripcion.getIdEstado());
             inscripcion.setIdEstudiante(this.idInscripcion.getIdEstudiante().toEntity());
             inscripcion.setIdInscripcion(this.idInscripcion.getIdInscripcion());         
             calificacion.setIdInscripcion(inscripcion);

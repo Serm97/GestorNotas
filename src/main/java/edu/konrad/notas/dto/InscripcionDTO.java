@@ -23,7 +23,7 @@ public class InscripcionDTO {
     private Long idInscripcion;
     private EstudianteDTO idEstudiante;
     private CursoDTO idCurso;
-    private EstadoDTO idEstado;
+    private String idEstado;
 
     //    Constructor
     public InscripcionDTO() {
@@ -53,13 +53,8 @@ public class InscripcionDTO {
             curso.setIdCurso(inscripcionEntity.getIdCurso().getIdCurso());
             this.idCurso = new CursoDTO(curso);
         }
-        if (inscripcionEntity.getIdEstado() != null) {
-            EstadoEntity estado = new EstadoEntity();
-            estado.setDescEstado(inscripcionEntity.getIdEstado().getDescEstado());
-            estado.setNomEstado(inscripcionEntity.getIdEstado().getNomEstado());
-            estado.setIdEstado(inscripcionEntity.getIdEstado().getIdEstado());
-            this.idEstado = new EstadoDTO(estado);
-        }
+        
+        this.idEstado = inscripcionEntity.getIdEstado();
 
     }
 
@@ -88,13 +83,7 @@ public class InscripcionDTO {
             curso.setIdCurso(this.idCurso.getIdCurso());
             inscripcion.setIdCurso(curso);
         }
-        if (this.idEstado != null){
-            EstadoEntity estado = new EstadoEntity();
-            estado.setDescEstado(estado.getDescEstado());
-            estado.setNomEstado(estado.getNomEstado());
-            estado.setIdEstado(estado.getIdEstado());
-            inscripcion.setIdEstado(estado);
-        }
+        inscripcion.setIdEstado(this.idEstado);
         
         return inscripcion;
     }
@@ -137,12 +126,13 @@ public class InscripcionDTO {
         this.idCurso = idCurso;
     }
 
-    public EstadoDTO getIdEstado() {
+    public String getIdEstado() {
         return idEstado;
     }
 
-    public void setIdEstado(EstadoDTO idEstado) {
+    public void setIdEstado(String idEstado) {
         this.idEstado = idEstado;
     }
 
+    
 }

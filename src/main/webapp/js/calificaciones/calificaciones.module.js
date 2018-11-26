@@ -1,0 +1,1 @@
+var calificacionesModule = angular.module("calificacionesModule", []);

@@ -15,30 +15,22 @@
                 <p class="lead text-center"> Formulario de Inscripcion</p>
                 <hr>
                 <div class="form-row mb-3">
-                    <div class="col">
-                        <input type="number" class="form-control" name="codPrograma" ng-model="programa.codPrograma"
-                            placeholder="Codigo del Curso" required>
-                    </div>
-                </div>
-                <div class="form-row mb-3">
-                    <div class="col">
-                        <input type="text" class="form-control" name="nomPrograma" ng-model="programa.nomPrograma"
-                            placeholder="Nombre del Programa" required>
-                    </div>
-                </div>
-                <div class="form-row mb-3">
-                    <div class="col">
-                        <select class="form-control" name="nivelAcademico" ng-model="programa.nivelAcademico" required>
-                            <option value="">Seleccione Nivel...</option>
-                            <option value="Pregrado">Pregrado</option>
-                            <option value="Postgrado">Postgrado</option>
-                            <option value="Maestria">Maestria</option>
-                            <option value="Doctorado">Doctorado</option>
+                    <div class="col-md-4">
+                        <select class="form-control" name="rol" ng-model="inscripcion.idCurso" ng-options="curso as curso.codCurso for curso in listaCursos track by curso.idCurso" required>
+                             <option value="" selected>--Elige Curso--</option>                       
                         </select>
                     </div>
+                    <div class="col-md-5">
+                        <select class="form-control" name="rol" ng-model="inscripcion.idEstudiante" ng-options="estudiante as estudiante.idPersona.nombrePersona for estudiante in listaEstudiantes track by estudiante.idEstudiante" required>
+                             <option value="" selected>Estudiante</option>                       
+                        </select>                       
+                    </div>
+                    <div class="col-md-3">
+                        <input class="form-control" type="text" value="Activo" disabled>
+                    </div>
                 </div>
-
-                <button class="btn btn-block btn-primary">Crear</button>
+               
+                    <button class="btn btn-block btn-primary">Crear</button>
             </form>
         </div>
 
